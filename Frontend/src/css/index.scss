@@ -78,6 +78,11 @@ $heading-icon-size:20px;
   @extend .header-element;
 }
 
+.arrow-menu{
+  width:$heading-icon-tab-width;
+  @extend .header-element;
+}
+
 .dash-heading{
   padding: 24px;
   left:$heading-icon-tab-width;

@@ -1,15 +1,27 @@
 <div>
     <div class="nav-header">
         <div class="r-full-width">
-            <P class="hamburger-menu"><IMG class="icon-header" src="/static/img/hamburger.svg" /></P>
-            <P class="dash-heading">MESSAGES</P>
+            <P class="hamburger-menu"
+               ng-show="dash.mode === 'LIST'"
+               ng-hide="dash.mode !== 'LIST'"
+                ng-click="dash.toggleHamburger()">
+                <IMG class="icon-header" src="/static/img/hamburger.svg" />
+            </P>
+            <P class="arrow-menu"
+               ng-show="dash.mode === 'THREAD'"
+               ng-hide="dash.mode !== 'THREAD'"
+                ng-click="dash.backToList()">
+                <IMG class="icon-header" src="/static/img/arrow-left.svg" />
+            </P>
+            <P class="dash-heading" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'">Messages</P>
+            <P class="dash-heading" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'">John Klinn</P>
             <P class="alarm"> <IMG  class="icon-header" src="/static/img/bell.svg" /> </P>
             <P class="kabob-menu"> <IMG class="icon-header" src="/static/img/kabob.svg" /> </P>
         </div>
     </div>
 
     <div>
-        <div>
+        <div ng-show="dash.selectedTab==='CHAT'" ng-hide="dash.selectedTab!=='CHAT'">
             <div ui-view="thread" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'"></div>
             <div ui-view="chatList" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'"></div>
         </div>
@@ -17,9 +29,27 @@
 
     <div class="nav-footer">
         <div class="r-full-width">
-            <P class="footer-tab-active">Chat</P>
-            <P class="footer-tab">Chores</P>
-            <P class="footer-tab">Bills</P>
+            <P class="footer-tab-active" ng-click="dash.switchTab('CHAT')"
+               ng-show="dash.selectedTab==='CHAT'" ng-hide="dash.selectedTab!=='CHAT'">
+                Chat
+            </P>
+            <P ng-click="dash.switchTab('CHAT')"
+               class="footer-tab" ng-hide="dash.selectedTab==='CHAT'" ng-show="dash.selectedTab!=='CHAT'">Chat</P>
+
+            <P class="footer-tab-active"
+               ng-show="dash.selectedTab==='CHORES'" ng-hide="dash.selectedTab!=='CHORES'"
+               ng-click="dash.switchTab('CHORES')"> Chores</P>
+            <P class="footer-tab"
+               ng-hide="dash.selectedTab==='CHORES'" ng-show="dash.selectedTab!=='CHORES'"
+               ng-click="dash.switchTab('CHORES')"> Chores</P>
+
+
+            <P class="footer-tab-active"
+               ng-show="dash.selectedTab==='BILLS'" ng-hide="dash.selectedTab!=='BILLS'"
+               ng-click="dash.switchTab('BILLS')"> Bills</P>
+            <P class="footer-tab"
+               ng-hide="dash.selectedTab==='BILLS'" ng-show="dash.selectedTab!=='BILLS'"
+               ng-click="dash.switchTab('BILLS')"> Bills</P>
         </div>
     </div>
 </div>
