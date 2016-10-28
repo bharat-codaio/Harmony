@@ -5,7 +5,7 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'ngMaterial'])
+        .module('app', ['ui.router', 'ngMaterial', 'ngMessages'])
         .run(($http) =>{
             $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 

@@ -9,9 +9,15 @@
         .controller('DashChatController', DashChatController);
 
 
-    function DashChatController(){
+    DashChatController.$inject = ['$state', '$rootScope'];
+
+    function DashChatController($state, $rootScope){
         console.log("dash chat controller active");
         const vm = this;
         this.mode = "LIST";
+
+        $rootScope.$on('ToggleChatMode', (data, msg)=>{
+            vm.mode=msg.mode;
+        })
     }
 })();

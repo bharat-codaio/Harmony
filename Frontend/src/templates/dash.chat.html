@@ -1,21 +1,25 @@
 <div>
     <div class="nav-header">
         <div class="r-full-width">
-            <P class="hamburger-menu">HAM</P>
+            <P class="hamburger-menu"><IMG class="icon-header" src="/static/img/hamburger.svg" /></P>
             <P class="dash-heading">MESSAGES</P>
-            <P class="alarm">BLL</P>
-            <P class="kabob-menu">KBB</P>
+            <P class="alarm"> <IMG  class="icon-header" src="/static/img/bell.svg" /> </P>
+            <P class="kabob-menu"> <IMG class="icon-header" src="/static/img/kabob.svg" /> </P>
         </div>
     </div>
 
     <div>
-        <div class="main-content">
+        <div>
             <div ui-view="thread" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'"></div>
             <div ui-view="chatList" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'"></div>
         </div>
     </div>
 
     <div class="nav-footer">
-    FOOTER
+        <div class="r-full-width">
+            <P class="footer-tab-active">Chat</P>
+            <P class="footer-tab">Chores</P>
+            <P class="footer-tab">Bills</P>
+        </div>
     </div>
 </div>

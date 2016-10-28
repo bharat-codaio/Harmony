@@ -4,7 +4,7 @@ Colors
 $color-primary: #0B4F6C;
 $color-bright: #01BAEF;
 $color-secondary: #20BF55;
-$color-white: #FBFBFF;
+$color-white: #F5FFFA;
 $color-grey:#757575;
 
 /*
@@ -16,6 +16,8 @@ COMPONENT SIZES
 */
 $header-height: 50px;
 $font-header-size: 22px;
+$footer-height: 70px;
+$font-footer-size: 28px;
 
 #boilerplate {
   color: $color-primary;
@@ -56,7 +58,7 @@ Generics
 
 .r-full-width{
   width:100%;
-  @extend .r;
+  @extend .r-c;
 }
 /*
 Specific Page Components
@@ -95,7 +97,11 @@ $heading-icon-size:20px;
   @extend .header-element;
 }
 
-
+.icon-header{
+  padding-top: 3px;
+  height: $font-header-size;
+  width: $font-header-size;
+}
 
 .nav-header{
   background-color: $color-primary;
@@ -104,8 +110,131 @@ $heading-icon-size:20px;
   top: 0px !important;
   left: 0px !important;
   right: 0px !important;
-  position: absolute;
+  position: fixed;
   font-size: $font-header-size;
   height: $header-height;
+  box-shadow: 1px 1px 20px $color-grey;
+  z-index:2000;
   @extend .flex-row;
+}
+
+.main-content{
+  top:$header-height;
+  padding-top:$header-height;
+  bottom: $footer-height;
+  padding-bottom: $footer-height;
+  height: 100%;
+  min-height: 800px;
+  background-color: $color-white;
+  width: 100%;
+  z-index: -1;
+}
+
+.footer-tab{
+  display: block;
+  width: 33%;
+  border-color: $color-white;
+  border-style: solid;
+  border-width: 1px;
+  border-bottom-width: 6px;
+  padding:17px;
+}
+
+.footer-tab-active{
+  @extend .footer-tab;
+  background-color: $color-bright !important;
+}
+
+
+
+.nav-footer{
+  background-color: $color-primary;
+  width: 100%;
+  color: $color-white;
+  bottom: 0px !important;
+  left: 0px !important;
+  right: 0px !important;
+  position: fixed;
+  font-size: $font-footer-size;
+  height: $footer-height;
+  box-shadow: 1px 1px 50px $color-grey;
+  z-index:2000;
+  @extend .flex-row;
+}
+
+.box-post {
+  padding-bottom: 6px;
+
+  position: relative;
+
+  border-bottom: 1px solid #C9D2D7;
+}
+
+.post-content {
+  position: relative;
+
+  padding-left: 28px;
+  padding-right: 72px;
+
+  @extend .flex-row;
+}
+
+.post-icon {
+  width: 32px;
+
+  margin-right: 8px;
+  margin-top: 4px;
+}
+
+.post-username {
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 34px;
+  color: $color-primary;
+}
+
+.post-last-message {
+  font-size: 10px;
+  color: $color-grey;
+
+  position: absolute;
+
+  left: 68px;
+  bottom: 6px;
+}
+
+.post-time{
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 34px;
+  color: $color-primary;
+  right:15px;
+  position:absolute;
+}
+
+
+ul {
+  height: 80%;
+
+  padding-top: 28px;
+  padding-left: 64px;
+  padding-right: 0;
+
+  overflow-y: auto;
+
+}
+
+li {
+  width: 100%;
+  //height: 62px;
+
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+
+  padding: 10px 20px;
+
+  margin: 0 auto;
+
+  border-bottom: 1px solid #A4B5BF;
 }
