@@ -1,0 +1,111 @@
+/*
+Colors
+*/
+$color-primary: #0B4F6C;
+$color-bright: #01BAEF;
+$color-secondary: #20BF55;
+$color-white: #FBFBFF;
+$color-grey:#757575;
+
+/*
+Fonts
+*/
+$font-primary: Verdana;
+/*
+COMPONENT SIZES
+*/
+$header-height: 50px;
+$font-header-size: 22px;
+
+#boilerplate {
+  color: $color-primary;
+}
+
+/*
+Generics
+*/
+*{
+  font-family: $font-primary;
+}
+
+.r {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+.r-c {
+  justify-content: center;
+  @extend .r;
+}
+
+.c {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.c-c {
+  justify-content: center;
+  @extend .c;
+}
+
+.flex-row{
+  display: flex;
+  flex-flow: row;
+}
+
+.r-full-width{
+  width:100%;
+  @extend .r;
+}
+/*
+Specific Page Components
+*/
+$heading-icon-tab-width:10%;
+$heading-text-tab-width:70%;
+$heading-icon-size:20px;
+
+.header-element{
+  padding: 10px;
+  display:block;
+}
+
+
+.hamburger-menu{
+  width:$heading-icon-tab-width;
+  @extend .header-element;
+}
+
+.dash-heading{
+  padding: 24px;
+  left:$heading-icon-tab-width;
+  width:$heading-text-tab-width;
+  display: block;
+}
+
+.alarm{
+  left: $heading-icon-tab-width+$heading-text-tab-width;
+  width:$heading-icon-tab-width;
+  @extend .header-element;
+}
+
+.kabob-menu{
+  left: $heading-icon-tab-width*2 + $heading-text-tab-width;
+  width:$heading-icon-tab-width;
+  @extend .header-element;
+}
+
+
+
+.nav-header{
+  background-color: $color-primary;
+  width: 100%;
+  color: $color-white;
+  top: 0px !important;
+  left: 0px !important;
+  right: 0px !important;
+  position: absolute;
+  font-size: $font-header-size;
+  height: $header-height;
+  @extend .flex-row;
+}
