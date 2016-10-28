@@ -5,7 +5,7 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router'])
+        .module('app', ['ui.router', 'ngMaterial'])
         .run(($http) =>{
             $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
@@ -69,6 +69,6 @@
                 .state(dashChat);
 
             $urlRouterProvider.otherwise('/dash/chat');
-            // $locationProvider.html5Mode(true);
+            $locationProvider.html5Mode(true);
         });
 })();
