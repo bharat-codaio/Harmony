@@ -1,4 +1,12 @@
 <div class="main-content">
+    <div class="box-post" ng-show="thread.showNewMessage===true">
+        <div class="post-content">
+            <img class="post-icon" src="/static/img/profile.svg" />
+            <P class="post-username">{{thread.messageToSend}}</P>
+            <P class="post-last-message">Me</P>
+            <P class="post-time">Now</P>
+        </div>
+    </div>
     <div class="box-post" >
         <div class="post-content">
             <img class="post-icon" src="/static/img/profile.svg" />
@@ -14,5 +22,11 @@
             <P class="post-last-message">Me</P>
             <P class="post-time">1:53 PM</P>
         </div>
+    </div>
+
+    <div class="chat-input">
+        <input type="text" class="chat-input-text" ng-model="thread.messageToSend" />
+        <img class="chat-input-button" src="/static/img/send.svg"
+             ng-click="thread.sendMessage()"/>
     </div>
 </div>

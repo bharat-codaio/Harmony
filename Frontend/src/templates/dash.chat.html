@@ -13,7 +13,7 @@
                 ng-click="dash.backToList()">
                 <IMG class="icon-header" src="/static/img/arrow-left.svg" />
             </P>
-            <P class="dash-heading" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'">Messages</P>
+            <P class="dash-heading" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'">{{dash.selectedTab}}</P>
             <P class="dash-heading" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'">John Klinn</P>
             <P class="alarm"> <IMG  class="icon-header" src="/static/img/bell.svg" /> </P>
             <P class="kabob-menu"> <IMG class="icon-header" src="/static/img/kabob.svg" /> </P>
@@ -21,6 +21,37 @@
     </div>
 
     <div>
+        <div ng-show="dash.showDrawer===true">
+            <div id="left-drawer">
+                <div class="c-c">
+                    <div id="drawer-profile">
+                        <div id="c-c">
+                            <img class="profile-img" src="/static/img/profile.svg" />
+                            <P>
+                                Joshua Tillman
+                            </P>
+                            <P>
+                                House of the Future
+                            </P>
+
+                        </div>
+                    </div>
+                    <div id="drawer-payment">
+                        <div class="flex-row">
+                            <div class="r">
+                                <IMG src="/static/img/credit-card.svg" class="credit-card"/>
+                                <P>
+                                    Payment
+                                </P>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay" ng-click="dash.toggleHamburger()">
+
+            </div>
+        </div>
         <div ng-show="dash.selectedTab==='CHAT'" ng-hide="dash.selectedTab!=='CHAT'">
             <div ui-view="thread" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'"></div>
             <div ui-view="chatList" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'"></div>

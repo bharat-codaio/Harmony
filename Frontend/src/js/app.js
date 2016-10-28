@@ -10,7 +10,7 @@
             $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
             // Toast Options
-            toastr.options.positionClass = 'toast-bottom-full-width';
+            // toastr.options.positionClass = 'toast-bottom-full-width';
             toastr.options.showDuration = 500;
             toastr.options.hideDuration = 500;
             toastr.options.timeOut = 3000;

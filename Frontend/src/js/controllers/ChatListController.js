@@ -15,11 +15,17 @@
         console.log("chat List controller active");
 
         vm.threadSelected = threadSelected;
+        vm.addThread = addThread;
 
         function threadSelected(){
             console.log("Thread Selected!");
             $rootScope.$broadcast('ToggleChatMode', {mode: 'THREAD'});
         }
+
+        function addThread(){
+            toastr.warning("Add Chat functionality not implemented yet")
+        }
+
 
 
     }

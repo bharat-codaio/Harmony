@@ -10,6 +10,16 @@
 
 
     function ChatThreadController(){
-        console.log("chat thread controller active")
+        const vm = this;
+
+        vm.sendMessage = sendMessage;
+
+        //TODO: Enable this for multiple messages
+        vm.showNewMessage=false;
+
+        vm.messageToSend = "";
+        function sendMessage(){
+            vm.showNewMessage = true;
+        }
     }
 })();

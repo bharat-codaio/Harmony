@@ -14,8 +14,9 @@
     function DashChatController($state, $rootScope){
         console.log("dash chat controller active");
         const vm = this;
-        this.mode = "LIST";
-        this.selectedTab="CHAT";
+        vm.mode = "LIST";
+        vm.selectedTab="CHAT";
+        vm.showDrawer = false;
 
         $rootScope.$on('ToggleChatMode', (data, msg)=>{
             vm.mode=msg.mode;
@@ -31,11 +32,12 @@
             vm.mode = "LIST";
         }
        function toggleHamburger(){
-            console.log("Click Hamburger");
+           vm.showDrawer = !vm.showDrawer;
+            console.log("Show Drawer " +  vm.showDrawer);
         }
 
         function switchTab(tab){
-            console.log("Switch tab " + tab)
+            console.log("Switch tab " + tab);
             vm.selectedTab = tab;
         }
     }

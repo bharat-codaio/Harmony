@@ -243,3 +243,122 @@ li {
 
   border-bottom: 1px solid #A4B5BF;
 }
+
+.button-add{
+
+
+  img{
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    bottom: $footer-height+15px;
+    right: 15px;
+    position: fixed;
+
+  }
+}
+
+.chat-input{
+  bottom:$footer-height;
+  left:10px;
+  right:10px;
+  width:100%;
+  min-width:260px;
+  padding:2px;
+  position:fixed;
+
+}
+
+.chat-input-text{
+  height: $header-height;
+  margin-bottom: 20px;
+  width:90%;
+  box-shadow: 1px 1px 6px  $color-grey;
+}
+
+.chat-input-button{
+  height: $header-height*0.5;
+  width:$header-height*0.5;
+  position: fixed;
+  z-index: 2000;
+  right:10% !important;
+  bottom: 105px;
+}
+
+#left-drawer{
+  z-index: 2100;
+  background-color: #fafafa;
+  height:100% !important;
+  min-height: 600px;
+  position:fixed;
+  left:0px;
+  width: 180px !important;
+  min-width: 120px;
+  top:0px;
+  bottom: 0px;
+  box-shadow: 1px 1px 6px  $color-grey;
+  border-color: $color-grey;
+  border-style: solid;
+  border-width: 2px;
+  border-bottom-width: 4px;
+  display: flex;
+  flex-flow: column;
+}
+
+#drawer-profile{
+  padding: 0px;
+  left:0px;
+  background-color: $color-bright;
+  height: 190px;
+  display: flex;
+  flex-flow: column;
+  font-size: 16px;
+  color: #fafafa;
+  border-bottom-color: $color-grey;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+
+  P{
+    display: block;
+    padding-left: 10px;
+    padding-right: 9px;
+  }
+}
+
+.profile-img{
+  left: 30px;
+  padding-left:50px;
+  padding-top:30px;
+  height: 80px;
+  width: 80px;
+}
+
+.overlay{
+  position: absolute;
+
+  top: -1*$header-height;
+  right: 0;
+  bottom: -1*$footer-height;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+
+  z-index: 2099;
+}
+
+#drawer-payment{
+  left:7px;
+
+
+  P{
+    color: $color-primary;
+    margin:8px;
+  }
+}
+
+
+.credit-card{
+  height: 25px;
+  width: 25px;
+}
