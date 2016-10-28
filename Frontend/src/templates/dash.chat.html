@@ -2,21 +2,21 @@
     <div class="nav-header">
         <div class="r-full-width">
             <P class="hamburger-menu"
-               ng-show="dash.mode === 'LIST'"
-               ng-hide="dash.mode !== 'LIST'"
+               ng-show="dash.mode === 'LIST' && !dash.showNotifications"
+               ng-hide="dash.mode !== 'LIST' || dash.showNotifications"
                 ng-click="dash.toggleHamburger()">
                 <IMG class="icon-header" src="/static/img/hamburger.svg" />
             </P>
             <P class="arrow-menu"
-               ng-show="dash.mode === 'THREAD'"
-               ng-hide="dash.mode !== 'THREAD'"
+               ng-show="dash.mode === 'THREAD' || dash.showNotifications"
+               ng-hide="dash.mode !== 'THREAD' && !dash.showNotifications"
                 ng-click="dash.backToList()">
                 <IMG class="icon-header" src="/static/img/arrow-left.svg" />
             </P>
             <P class="dash-heading" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'">{{dash.selectedTab}}</P>
             <P class="dash-heading" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'">John Klinn</P>
-            <P class="alarm"> <IMG  class="icon-header" src="/static/img/bell.svg" /> </P>
-            <P class="kabob-menu"> <IMG class="icon-header" src="/static/img/kabob.svg" /> </P>
+            <P class="alarm"> <IMG  class="icon-header" src="/static/img/bell.svg" ng-click="dash.toggleAlarm()" /> </P>
+            <P class="kabob-menu"> <IMG class="icon-header" src="/static/img/kabob.svg" ng-click="dash.toggleKabob()"/> </P>
         </div>
     </div>
 
@@ -46,17 +46,39 @@
                             </div>
                         </div>
                     </div>
+                    <div id="drawer-bottom-tray">
+                        <IMG src="/static/img/add-friend.svg" class="add-friend" />
+                        <P>
+                            Invite Housemates
+                        </P>
+                    </div>
                 </div>
             </div>
             <div class="overlay" ng-click="dash.toggleHamburger()">
 
             </div>
         </div>
+        <div ng-show="dash.showKabobDrop">
+            <div class="drop-down">
+                <div class="c-c">
+                    <P>Help Center</P>
+                    <P>Settings</P>
+                    <P>Logout</P>
+                </div>
+            </div>
+            <div class="overlay" ng-click="dash.toggleKabob()">
+
+            </div>
+        </div>
+
+
         <div ng-show="dash.selectedTab==='CHAT'" ng-hide="dash.selectedTab!=='CHAT'">
             <div ui-view="thread" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'"></div>
             <div ui-view="chatList" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'"></div>
         </div>
     </div>
+
+
 
     <div class="nav-footer">
         <div class="r-full-width">

@@ -22,34 +22,34 @@
     <favorites_list name="Harmony" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.57784146">
+    <splitter split-orientation="horizontal" split-proportion="0.55109835">
       <split-first>
         <leaf>
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Frontend/src/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="380">
-                  <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+                <state relative-caret-position="170">
+                  <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DashChatController.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="DashChatController.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Frontend/src/js/controllers/DashChatController.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="509">
-                  <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+                <state relative-caret-position="780">
+                  <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="dash.chat.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="dash.chat.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Frontend/src/templates/dash.chat.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="245">
-                  <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+                <state relative-caret-position="900">
+                  <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
@@ -119,11 +119,21 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="index.scss" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.scss" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Frontend/src/css/index.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="266">
-                  <caret line="299" column="22" selection-start-line="299" selection-start-column="22" selection-end-line="299" selection-end-column="22" />
+                <state relative-caret-position="191">
+                  <caret line="381" column="14" selection-start-line="381" selection-start-column="14" selection-end-line="381" selection-end-column="14" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="add-friend.svg" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Frontend/src/img/add-friend.svg">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -149,11 +159,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ChatListController.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ChatListController.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Frontend/src/js/controllers/ChatListController.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+                <state relative-caret-position="465">
+                  <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
                   <folding />
                 </state>
               </provider>
@@ -206,13 +216,14 @@
         <option value="$PROJECT_DIR$/Backend/src/ServerEnv.js" />
         <option value="$PROJECT_DIR$/Frontend/src/templates/chat.list.html" />
         <option value="$PROJECT_DIR$/Frontend/src/img/add.svg" />
-        <option value="$PROJECT_DIR$/Frontend/src/js/controllers/ChatListController.js" />
         <option value="$PROJECT_DIR$/Frontend/src/templates/chat.thread.html" />
         <option value="$PROJECT_DIR$/Frontend/src/js/controllers/ChatThreadController.js" />
         <option value="$PROJECT_DIR$/Frontend/src/js/app.js" />
-        <option value="$PROJECT_DIR$/Frontend/src/js/controllers/DashChatController.js" />
-        <option value="$PROJECT_DIR$/Frontend/src/templates/dash.chat.html" />
+        <option value="$PROJECT_DIR$/Frontend/src/img/add-friend.svg" />
         <option value="$PROJECT_DIR$/Frontend/src/css/index.scss" />
+        <option value="$PROJECT_DIR$/Frontend/src/templates/dash.chat.html" />
+        <option value="$PROJECT_DIR$/Frontend/src/js/controllers/DashChatController.js" />
+        <option value="$PROJECT_DIR$/Frontend/src/js/controllers/ChatListController.js" />
       </list>
     </option>
   </component>
@@ -689,12 +700,12 @@
       <updated>1477597044358</updated>
       <workItem from="1477597046012" duration="6541000" />
       <workItem from="1477610561496" duration="16000" />
-      <workItem from="1477610580440" duration="28502000" />
+      <workItem from="1477610580440" duration="30949000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35059000" />
+    <option name="totallyTimeSpent" value="37506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1360" height="741" extended-state="6" />
@@ -814,14 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/src/img/profile.svg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -878,14 +881,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/src/js/controllers/ChatListController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/src/templates/chat.thread.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -907,7 +902,7 @@
         <state relative-caret-position="205">
           <caret line="404" column="31" selection-start-line="404" selection-start-column="27" selection-end-line="404" selection-end-column="31" />
           <folding>
-            <marker date="1477647894000" expanded="true" signature="6770:6777" ph="×" />
+            <marker date="1477651449000" expanded="true" signature="6770:6777" ph="×" />
           </folding>
         </state>
       </provider>
@@ -920,26 +915,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/src/js/controllers/DashChatController.js">
+    <entry file="file://$PROJECT_DIR$/Frontend/src/img/add-friend.svg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/src/templates/dash.chat.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
+        <state relative-caret-position="900">
+          <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/src/js/controllers/DashChatController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/src/css/index.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="299" column="22" selection-start-line="299" selection-start-column="22" selection-end-line="299" selection-end-column="22" />
+        <state relative-caret-position="191">
+          <caret line="381" column="14" selection-start-line="381" selection-start-column="14" selection-end-line="381" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/src/js/controllers/ChatListController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
           <folding />
         </state>
       </provider>

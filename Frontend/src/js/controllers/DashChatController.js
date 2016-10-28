@@ -17,14 +17,16 @@
         vm.mode = "LIST";
         vm.selectedTab="CHAT";
         vm.showDrawer = false;
+        vm.showKabobDrop = false;
+        vm.showNotifications = false;
 
         $rootScope.$on('ToggleChatMode', (data, msg)=>{
             vm.mode=msg.mode;
         });
 
-
-
         vm.toggleHamburger = toggleHamburger;
+        vm.toggleKabob = toggleKabob;
+        vm.toggleAlarm = toggleAlarm;
         vm.backToList = backToList;
         vm.switchTab = switchTab;
 
@@ -34,6 +36,17 @@
        function toggleHamburger(){
            vm.showDrawer = !vm.showDrawer;
             console.log("Show Drawer " +  vm.showDrawer);
+        }
+
+        function toggleKabob(){
+           vm.showKabobDrop = !vm.showKabobDrop;
+            console.log("Show Kabob Drop " +  vm.showKabobDrop);
+        }
+
+        function toggleAlarm() {
+            //vm.showNotifications = !vm.showNotifications;
+            toastr.warning("Ability to view notifications not available yet");
+            console.log("Show Notifications " +  vm.showNotifications);
         }
 
         function switchTab(tab){

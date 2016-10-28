@@ -23,7 +23,7 @@
         }
 
         function addThread(){
-            toastr.warning("Add Chat functionality not implemented yet")
+            toastr.warning("Add Chat functionality not available yet")
         }
 
 
