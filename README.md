@@ -1,7 +1,7 @@
-# Boilerplate-Angular-UIRouter-Node-Express-Gulp
-A Boilerplate for Angular1-UIRouter front end with Node/Express Backend that uses Gulp
+# HARMONY
+-- Living with roommates can and should be a pleasant experience --
 
-To Run this Boilerplate, 
-Simply run the shell script init.sh in your shell.
+Through better means of commucation and a shared sense of accountability, we can ensure that 
+any household can be brought into harmony. With this purpose, the Harmony app has been created.
 
-The rest is simple enough to follow but if any troubles please bring it up in issues!
+To access the app, please visit http://52.53.153.99/
