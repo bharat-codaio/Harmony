@@ -1,4 +1,9 @@
 /*
+Dimensions
+*/
+$desktop: "(min-width: 767px)";
+$mobile: "(max-width: 767px)";
+/*
 Colors
 */
 $color-primary: #0B4F6C;
@@ -403,3 +408,245 @@ li {
   }
 
 }
+
+
+.card {
+  padding: 4px 12px;
+
+  border-radius: 2px;
+
+  background-color: $color-white;
+
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.box-floating_input {
+  $height-input: 28px;
+
+  height: $height-input;
+
+  position: relative;
+
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  @media #{$desktop} {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  input {
+    width: 100%;
+    height: $height-input;
+
+    font-size: 14px;
+
+    @media #{$desktop} {
+      font-size: 22px;
+    }
+
+    background-color: $color-white;
+
+    padding-left: 4px;
+    padding-right: 4px;
+
+    border: none;
+  }
+
+  input:focus {
+    outline: none;
+
+  }
+
+  input:focus + label, input:valid + label {
+    top: -18px;
+    font-size: 10px;
+    @media #{$desktop} {
+      top: -22px;
+      font-size: 14px;
+    }
+  }
+
+  .bar {
+    width: 100%;
+    height: 2px;
+
+    position: absolute;
+    bottom: 0;
+
+    background-color: #333;
+
+    transition: width 0.3s linear;
+  }
+
+  .highlight {
+    width: 0;
+    height: 3px;
+
+    position: absolute;
+    bottom: -0.5px;
+
+
+    transition: width 0.3s linear;
+  }
+
+
+
+
+  input:focus ~ .highlight, input:valid ~ .highlight {
+    width: 100%;
+  }
+
+  label {
+    position: absolute;
+    left: 4px;
+    top: 0;
+    bottom: 0;
+
+    line-height: $height-input;
+
+    font-size: 14px;
+
+    @media #{$desktop} {
+      font-size: 22px;
+    }
+
+    color: #aaa;
+
+
+    transition: top 0.3s linear, font-size 0.3s linear;
+  }
+}
+
+#card-login {
+  min-height: 300px;
+
+  position: absolute;
+
+  top: 52px;
+  right: 36px;
+  left: 36px;
+  bottom: 52px;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+  #title {
+    font-weight: 300;
+    font-size: 24px;
+
+    text-align: center;
+
+    margin: 0;
+  }
+
+  @media #{$desktop} {
+
+    #title {
+      font-size: 52px;
+    }
+
+    .logo-login {
+      width: 164px;
+    }
+
+    #box-top {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+    }
+  }
+}
+
+  #box-input {
+    display: flex;
+    flex-flow: column;
+
+    padding: 0 12px;
+
+    margin-top: 22px;
+
+    @media #{$desktop} {
+      width: 500px;
+
+      margin-top: 20px;
+
+    }
+
+    a {
+      margin-top: 32px;
+    }
+  }
+
+
+#box-info {
+  display: flex;
+  flex-flow: column;
+
+  padding: 0 12px;
+
+  margin-top: 22px;
+
+  @media #{$desktop} {
+    width: 800px;
+
+    margin-top: 20px;
+
+  }
+
+  a {
+    margin-top: 32px;
+  }
+}
+
+.button-round {
+  width: 150px;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  @media #{$desktop} {
+    font-size: 18px !important;
+    width: 240px !important;
+  }
+
+  color: white;
+
+  text-align: center;
+
+  margin-top: 12px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 12px 12px;
+
+  box-shadow: rgba(0, 0, 0, 0.247059) 0px 2px 8px, rgba(0, 0, 0, 0.219608) 0px 0px 3px;
+  background-color: $color-bright;
+
+  border-radius: 20px;
+
+  transition: box-shadow 0.1s linear;
+  -webkit-transition: box-shadow 0.1s linear;
+
+  cursor: pointer;
+}
+
+.card-background{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background-color: $color-primary;
+}
+
+
+.logo-medium{
+  height: 150px;
+  width: 150px;
+}
+
+
+
+

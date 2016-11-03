@@ -11,7 +11,18 @@
     LaunchController.$inject = ['$state'];
 
     function LaunchController($state){
-        $state.go('dash.chat');
-        toastr.success("Launch Controller Works with UI STATEEEEEEE. BoilerPlate Setup!!!")
+
+        const vm = this;
+
+        vm.tryLogin = tryLogin;
+
+        function tryLogin(){
+            goToDash();
+        }
+
+        function goToDash(){
+            $state.go('dash.chat');
+        }
+
     }
 })();

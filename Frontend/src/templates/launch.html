@@ -1,1 +1,29 @@
-<div ui-view> Launch Template </div>
+<div ui-view>
+    <div class="card-background">
+        <div class="card" id="card-login">
+            <div id="box-top">
+                <div class="r-full-width">
+                    <div class="logo-medium">
+                        <img src="/static/img/logo.svg">
+                    </div>
+                </div>
+                <div id="box-input">
+                    <div class="box-floating_input">
+                        <input name="email" type="text" id="email"
+                               ng-model="launch.input.email" required>
+                        <label for="email">Email</label>
+                        <span class="bar"></span>
+                    </div>
+                    <br>
+                    <div class="box-floating_input">
+                        <input name="password" type="password" id="password"
+                               ng-model="launch.input.password" required>
+                        <label for="password">Password</label>
+                        <span class="bar"></span>
+                    </div>
+                    <a class="button-round" ng-click="launch.tryLogin()">Log In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

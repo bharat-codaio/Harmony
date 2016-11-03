@@ -22,11 +22,14 @@
             $httpProvider.defaults.withCredentials = true;
 
             console.log("This is app config");
+
+
             const launch = {
                 name: 'launch',
                 url: '/launch',
                 templateUrl: '/static/templates/launch.html',
-                controller: 'LaunchController'
+                controller: 'LaunchController',
+                controllerAs: 'launch'
             };
 
             const dash = {
@@ -58,7 +61,13 @@
                         templateUrl: '/static/templates/chat.list.html',
                         controller: 'ChatListController',
                         controllerAs: 'chatList'
+                    },
+                    'chores@dash.chat':{
+                        templateUrl: '/static/templates/dash.chores.html',
+                        controller: 'ChoresController',
+                        controllerAs: 'chores'
                     }
+
                 }
             };
 
@@ -68,7 +77,7 @@
                 .state(launch)
                 .state(dashChat);
 
-            $urlRouterProvider.otherwise('/dash/chat');
+            $urlRouterProvider.otherwise('/launch');
             $locationProvider.html5Mode(true);
         });
 })();
