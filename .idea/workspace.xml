@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45bb9773-5da3-415f-8ed3-fe7a1c785c0f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/css/index.scss" afterPath="$PROJECT_DIR$/Frontend/src/css/index.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/js/app.js" afterPath="$PROJECT_DIR$/Frontend/src/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/js/controllers/LaunchController.js" afterPath="$PROJECT_DIR$/Frontend/src/js/controllers/LaunchController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/templates/launch.html" afterPath="$PROJECT_DIR$/Frontend/src/templates/launch.html" />
-    </list>
+    <list default="true" id="45bb9773-5da3-415f-8ed3-fe7a1c785c0f" name="Default" comment="" />
     <ignored path="Harmony.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -64,8 +58,8 @@
           <file leaf-file-name="launch.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Frontend/src/templates/launch.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="22" />
+                <state relative-caret-position="420">
+                  <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
                   <folding />
                 </state>
               </provider>
@@ -609,12 +603,12 @@
       <workItem from="1477597046012" duration="6541000" />
       <workItem from="1477610561496" duration="16000" />
       <workItem from="1477610580440" duration="32180000" />
-      <workItem from="1478149120272" duration="2914000" />
+      <workItem from="1478149120272" duration="2971000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41651000" />
+    <option name="totallyTimeSpent" value="41708000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
@@ -887,18 +881,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/src/templates/launch.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/src/css/index.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="528" column="7" selection-start-line="528" selection-start-column="7" selection-end-line="528" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/src/templates/launch.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
           <folding />
         </state>
       </provider>
