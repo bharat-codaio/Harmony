@@ -48,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="drawer-bottom-tray">
+                    <div id="drawer-bottom-tray" ng-click="dash.addHousemate()">
                         <IMG src="/static/img/add-friend.svg" class="add-friend" />
                         <P>
                             Invite Housemates
@@ -101,13 +101,6 @@
                ng-hide="dash.selectedTab==='CHORES'" ng-show="dash.selectedTab!=='CHORES'"
                ng-click="dash.switchTab('CHORES')"> Chores</P>
 
-
-            <P class="footer-tab-active"
-               ng-show="dash.selectedTab==='BILLS'" ng-hide="dash.selectedTab!=='BILLS'"
-               ng-click="dash.switchTab('BILLS')"> Bills</P>
-            <P class="footer-tab"
-               ng-hide="dash.selectedTab==='BILLS'" ng-show="dash.selectedTab!=='BILLS'"
-               ng-click="dash.switchTab('BILLS')"> Bills</P>
         </div>
     </div>
 </div>

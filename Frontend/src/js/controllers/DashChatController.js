@@ -30,6 +30,7 @@
         vm.backToList = backToList;
         vm.switchTab = switchTab;
         vm.goToSettings = goToSettings;
+        vm.addHousemate = addHousemate;
 
         function backToList(){
             vm.mode = "LIST";
@@ -57,6 +58,10 @@
 
         function goToSettings(){
             toastr.warning("Settings functionality coming soon!")
+        }
+
+        function addHousemate(){
+            toastr.warning("Ability to add new housemate coming soon!");
         }
     }
 })();
