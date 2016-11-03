@@ -15,8 +15,10 @@
             </P>
             <P class="dash-heading" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'">{{dash.selectedTab}}</P>
             <P class="dash-heading" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'">John Klinn</P>
+            <P class="kabob-menu"> <div class="logo-banner">Harmony</div> </P>
             <P class="alarm"> <IMG  class="icon-header" src="/static/img/bell.svg" ng-click="dash.toggleAlarm()" /> </P>
             <!--<P class="kabob-menu"> <IMG class="icon-header" src="/static/img/kabob.svg" ng-click="dash.toggleKabob()"/> </P>-->
+
         </div>
     </div>
 
@@ -75,6 +77,9 @@
         <div ng-show="dash.selectedTab==='CHAT'" ng-hide="dash.selectedTab!=='CHAT'">
             <div ui-view="thread" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'"></div>
             <div ui-view="chatList" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'"></div>
+        </div>
+        <div ng-show="dash.selectedTab==='CHORES'">
+            <div ui-view="chores"></div>
         </div>
     </div>
 

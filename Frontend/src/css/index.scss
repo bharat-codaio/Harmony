@@ -24,6 +24,8 @@ $font-header-size: 22px;
 $footer-height: 70px;
 $font-footer-size: 28px;
 
+$border-radius-width:500px;
+
 #boilerplate {
   color: $color-primary;
 }
@@ -89,7 +91,7 @@ $heading-icon-size:20px;
 }
 
 .dash-heading{
-  padding: 24px;
+  padding-left: 12px;
   left:$heading-icon-tab-width;
   width:$heading-text-tab-width;
   display: block;
@@ -219,6 +221,17 @@ $heading-icon-size:20px;
   min-height: 34px;
   color: $color-primary;
   right:15px;
+  position:absolute;
+}
+
+.post-action{
+  color: #BD362F;
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 34px;
+  right:15px;
+  top:22px;
+  font-style: oblique;
   position:absolute;
 }
 
@@ -413,6 +426,9 @@ li {
 .card {
   padding: 4px 12px;
 
+  margin-top:22px;
+  margin-left: 10%;
+  margin-right: 10%;
   border-radius: 2px;
 
   background-color: $color-white;
@@ -652,5 +668,83 @@ li {
   font-style: italic;
 }
 
+.tab-switch{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  width: 86px;
+  box-shadow: 1px 1px 10px $color-grey;
+}
 
 
+.tab-switch-left{
+ @extend .tab-switch;
+  border-bottom-left-radius: $border-radius-width;
+  border-top-left-radius: $border-radius-width;
+}
+.tab-switch-right{
+  @extend .tab-switch;
+  border-bottom-right-radius: $border-radius-width;
+  border-top-right-radius: $border-radius-width;
+}
+
+.tab-switch-active{
+  background-color: $color-bright;
+  color: $color-primary;
+}
+
+.tab-switch-inactive{
+  background-color: $color-grey;
+  color: #9e9e9e;
+}
+
+
+.tab-switch-left-active{
+  @extend .tab-switch-left;
+  @extend .tab-switch-active;
+}
+
+.tab-switch-right-active{
+  @extend .tab-switch-right;
+  @extend .tab-switch-active;
+}
+
+.tab-switch-left-inactive{
+  @extend .tab-switch-left;
+  @extend .tab-switch-inactive;
+}
+
+.tab-switch-right-inactive{
+  @extend .tab-switch-right;
+  @extend .tab-switch-inactive;
+}
+
+.chores-heading{
+  @extend .flex-row;
+  P{
+    width: 50%;
+  }
+
+}
+
+.chores-item{
+  @extend .r;
+  input{
+    width: 5%;
+  }
+
+
+  .item-description{
+    font-style: oblique;
+    width:80%;
+    padding-left: 5px;
+  }
+
+  .item-time{
+    width: 15%;
+    padding-right:15px;
+  }
+
+
+}

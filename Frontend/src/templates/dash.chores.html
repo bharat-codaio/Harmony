@@ -1,3 +1,101 @@
-<div class="">
+<div class="main-content">
+    <div class="r-c">
+        <a class="tab-switch-left-active" ng-show="chores.showMyChores" ng-click="chores.toggleTab()">My Chores</a>
+        <a class="tab-switch-left-inactive" ng-show="!chores.showMyChores" ng-click="chores.toggleTab()">My Chores</a>
+        <a class="tab-switch-right-active" ng-show="!chores.showMyChores" ng-click="chores.toggleTab()">Others</a>
+        <a class="tab-switch-right-inactive" ng-show="chores.showMyChores" ng-click="chores.toggleTab()">Others</a>
+    </div>
 
+    <div ng-show="chores.showMyChores">
+        <div class="card">
+            <div class="chores-section">
+                <div class="chores-heading">
+                <P>Today</P>
+                </div>
+                <div class="chores-item">
+                    <input type="checkbox" />
+                    <P class="item-description">Do Stuff</P>
+                    <P class="item-time">6.53PM</P>
+                </div>
+                <div class="chores-item">
+                    <input type="checkbox" />
+                    <P class="item-description">Do Stuff</P>
+                    <P class="item-time">6.53PM</P>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="chores-section">
+                <div class="chores-heading">
+                    <P>Today</P>
+                </div>
+                <div class="chores-item">
+                    <input type="checkbox" />
+                    <P class="item-description">Do Stuff</P>
+                    <P class="item-time">6.53PM</P>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-show="!chores.showMyChores">
+        <div class="card">
+            <div class="chores-section">
+                <div class="chores-heading">
+                    <P>Completed Today</P>
+                </div>
+            </div>
+            <div class="box-post">
+                <div class="post-content">
+                    <img class="post-icon" src="/static/img/profile.svg" />
+                    <P class="post-username">Everybody</P>
+                    <P class="post-last-message">Clean Dishes</P>
+                    <P class="post-time">2:13 PM</P>
+                    <P class="post-action">Disagree?</P>
+                </div>
+            </div>
+            <div class="box-post">
+                <div class="post-content">
+                    <img class="post-icon" src="/static/img/profile.svg" />
+                    <P class="post-username">John</P>
+                    <P class="post-last-message">Take out trash</P>
+                    <P class="post-time">1:53 PM</P>
+                    <P class="post-action">Disagree?</P>
+                </div>
+            </div>
+            <div class="box-post" >
+                <div class="post-content" >
+                    <img class="post-icon" src="/static/img/profile.svg" />
+                    <P class="post-username">Sam</P>
+                    <P class="post-last-message">Chore</P>
+                    <P class="post-time">1:41 PM</P>
+                    <P class="post-action">Disagree?</P>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="chores-section">
+                <div class="chores-heading">
+                    <P>Past Due</P>
+                </div>
+            </div>
+            <div class="box-post">
+                <div class="post-content">
+                    <img class="post-icon" src="/static/img/profile.svg" />
+                    <P class="post-username">John</P>
+                    <P class="post-last-message">Mop Kitchen</P>
+                    <P class="post-time">2:13 PM</P>
+                    <P class="post-action">Remind?</P>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="button-add">
+        <img src="/static/img/add.svg" ng-click="chores.createChore()"/>
+    </div>
 </div>
