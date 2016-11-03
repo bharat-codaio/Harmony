@@ -135,7 +135,7 @@ $heading-icon-size:20px;
   padding-bottom: $footer-height;
   height: 100%;
   min-height: 800px;
-  background-color: $color-white;
+  background-color: #FAFAFA;
   width: 100%;
   z-index: -1;
 }
@@ -647,6 +647,10 @@ li {
   width: 150px;
 }
 
+.logo-banner{
+  font-family: "Palatino";
+  font-style: italic;
+}
 
 
 

@@ -16,7 +16,7 @@
             <P class="dash-heading" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'">{{dash.selectedTab}}</P>
             <P class="dash-heading" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'">John Klinn</P>
             <P class="alarm"> <IMG  class="icon-header" src="/static/img/bell.svg" ng-click="dash.toggleAlarm()" /> </P>
-            <P class="kabob-menu"> <IMG class="icon-header" src="/static/img/kabob.svg" ng-click="dash.toggleKabob()"/> </P>
+            <!--<P class="kabob-menu"> <IMG class="icon-header" src="/static/img/kabob.svg" ng-click="dash.toggleKabob()"/> </P>-->
         </div>
     </div>
 
@@ -38,10 +38,10 @@
                     </div>
                     <div id="drawer-payment">
                         <div class="flex-row">
-                            <div class="r">
-                                <IMG src="/static/img/credit-card.svg" class="credit-card"/>
+                            <div class="r" ng-click="dash.goToSettings()">
+                                <IMG src="/static/img/settings.svg" class="credit-card"/>
                                 <P>
-                                    Payment
+                                    Settings
                                 </P>
                             </div>
                         </div>
@@ -58,18 +58,18 @@
 
             </div>
         </div>
-        <div ng-show="dash.showKabobDrop">
-            <div class="drop-down">
-                <div class="c-c">
-                    <P>Help Center</P>
-                    <P>Settings</P>
-                    <P>Logout</P>
-                </div>
-            </div>
-            <div class="overlay" ng-click="dash.toggleKabob()">
+        <!--<div ng-show="dash.showKabobDrop">-->
+            <!--<div class="drop-down">-->
+                <!--<div class="c-c">-->
+                    <!--<P>Help Center</P>-->
+                    <!--<P>Settings</P>-->
+                    <!--<P>Logout</P>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="overlay" ng-click="dash.toggleKabob()">-->
 
-            </div>
-        </div>
+            <!--</div>-->
+        <!--</div>-->
 
 
         <div ng-show="dash.selectedTab==='CHAT'" ng-hide="dash.selectedTab!=='CHAT'">

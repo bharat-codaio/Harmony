@@ -29,6 +29,7 @@
         vm.toggleAlarm = toggleAlarm;
         vm.backToList = backToList;
         vm.switchTab = switchTab;
+        vm.goToSettings = goToSettings;
 
         function backToList(){
             vm.mode = "LIST";
@@ -52,6 +53,10 @@
         function switchTab(tab){
             console.log("Switch tab " + tab);
             vm.selectedTab = tab;
+        }
+
+        function goToSettings(){
+            toastr.warning("Settings functionality coming soon!")
         }
     }
 })();
