@@ -98,4 +98,52 @@
     <div class="button-add">
         <img src="/static/img/add.svg" ng-click="chores.createChore()"/>
     </div>
+
+    <div ng-show="chores.showOverlay" class="overlay" ng-click="chores.hideOverlay()">
+
+    </div>
+
+    <div class="card-overlay" ng-show="chores.showOverlay">
+        <P>New Chore:</P>
+        <div class="box-floating_input">
+            <input name="choreName" type="text" id="choreName"
+                   ng-model="chores.newChore.name" required>
+            <label for="choreName">Name</label>
+            <span class="bar"></span>
+        </div>
+        <P>Assign To: </P>
+        <div class="box-post">
+            <div class="post-content">
+                <img class="post-icon" src="/static/img/profile.svg" />
+                <P class="post-assignee">John</P>
+                <input type="checkbox" class="post-checkbox">
+            </div>
+        </div>
+        <div class="box-post">
+            <div class="post-content">
+                <img class="post-icon" src="/static/img/profile.svg" />
+                <P class="post-assignee">John</P>
+                <input type="checkbox" class="post-checkbox">
+            </div>
+        </div>
+        <div class="box-post">
+            <div class="post-content">
+                <img class="post-icon" src="/static/img/profile.svg" />
+                <P class="post-assignee">John</P>
+                <input type="checkbox" class="post-checkbox">
+            </div>
+        </div>
+        <div class="box-post">
+            <div class="post-content">
+                <img class="post-icon" src="/static/img/profile.svg" />
+                <P class="post-assignee">John</P>
+                <input type="checkbox" class="post-checkbox">
+            </div>
+        </div>
+        <P> <a class="button-overlay" ng-click="chores.submitChore()">Submit</a>
+        </P>
+
+
+
+    </div>
 </div>

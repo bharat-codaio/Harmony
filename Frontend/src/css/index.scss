@@ -205,6 +205,14 @@ $heading-icon-size:20px;
   color: $color-primary;
 }
 
+.post-assignee {
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 34px;
+  margin-top:27px;
+  color: $color-primary;
+}
+
 .post-last-message {
   font-size: 10px;
   color: $color-grey;
@@ -222,6 +230,16 @@ $heading-icon-size:20px;
   color: $color-primary;
   right:15px;
   position:absolute;
+}
+
+.post-checkbox{
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 34px;
+  color: $color-primary;
+  right:15px;
+  position:absolute;
+  margin-top:20px;
 }
 
 .post-action{
@@ -748,3 +766,18 @@ li {
 
 
 }
+
+.card-overlay{
+  @extend .card;
+  z-index: 2100;
+  position: absolute;
+  min-height: 500px;
+  width: 75%;
+  top: 100px;
+}
+
+.button-overlay{
+  @extend .button-round;
+  margin-left: 39%;
+}
+

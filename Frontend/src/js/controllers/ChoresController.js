@@ -16,9 +16,12 @@
         const vm = this;
 
         vm.showMyChores = true;//shows mine if true or others if false
+        vm.showOverlay = false;
 
         vm.toggleTab = toggleTab;
         vm.createChore = createChore;
+        vm.hideOverlay = hideOverlay;
+        vm.submitChore = submitChore;
 
         vm.myChores = {};
         vm.apartmentChores = {};
@@ -29,7 +32,17 @@
         }
 
         function createChore(){
-            toastr.warning("Create new chore cunt");
+            vm.showOverlay = true;
+        }
+
+        function hideOverlay(){
+            vm.showOverlay = false;
+        }
+
+        function submitChore(){
+            //TODO: Send chore to server
+            toastr.success("Created a new chore!");
+            vm.hideOverlay();
         }
 
 
