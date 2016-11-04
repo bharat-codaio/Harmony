@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45bb9773-5da3-415f-8ed3-fe7a1c785c0f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/js/controllers/ChoresController.js" afterPath="$PROJECT_DIR$/Frontend/src/js/controllers/ChoresController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/js/controllers/DashChatController.js" afterPath="$PROJECT_DIR$/Frontend/src/js/controllers/DashChatController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/templates/chat.list.html" afterPath="$PROJECT_DIR$/Frontend/src/templates/chat.list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/templates/dash.chat.html" afterPath="$PROJECT_DIR$/Frontend/src/templates/dash.chat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/templates/dash.chores.html" afterPath="$PROJECT_DIR$/Frontend/src/templates/dash.chores.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/src/ServerEnv.js" afterPath="$PROJECT_DIR$/Backend/src/ServerEnv.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/js/services/ServerService.js" afterPath="$PROJECT_DIR$/Frontend/src/js/services/ServerService.js" />
     </list>
     <ignored path="Harmony.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,7 +38,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DashChatController.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="DashChatController.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Frontend/src/js/controllers/DashChatController.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="494">
@@ -51,11 +48,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Frontend/src/js/app.js">
+          <file leaf-file-name="ServerEnv.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Backend/dist/ServerEnv.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+                <state relative-caret-position="45">
+                  <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
                   <folding />
                 </state>
               </provider>
@@ -66,6 +63,16 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="45">
                   <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Frontend/src/js/app.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
                   <folding />
                 </state>
               </provider>
@@ -91,16 +98,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="chat.thread.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Frontend/src/templates/chat.thread.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="dash.chores.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Frontend/src/templates/dash.chores.html">
               <provider selected="true" editor-type-id="text-editor">
@@ -111,11 +108,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ServerService.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ServerService.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Frontend/src/js/services/ServerService.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+                <state relative-caret-position="180">
+                  <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
                   <folding />
                 </state>
               </provider>
@@ -276,7 +273,6 @@
         <option value="$PROJECT_DIR$/../Boilerplate-Node-Express-Angular1-SCSS-Gulp/Frontend/src/js/controllers/LaunchController.js" />
         <option value="$PROJECT_DIR$/../Boilerplate-Node-Express-Angular1-SCSS-Gulp/Frontend/src/index.html" />
         <option value="$PROJECT_DIR$/Frontend/src/templates/dash.html" />
-        <option value="$PROJECT_DIR$/Backend/src/ServerEnv.js" />
         <option value="$PROJECT_DIR$/Frontend/src/img/add.svg" />
         <option value="$PROJECT_DIR$/Frontend/src/templates/chat.thread.html" />
         <option value="$PROJECT_DIR$/Frontend/src/js/controllers/ChatThreadController.js" />
@@ -288,7 +284,6 @@
         <option value="$PROJECT_DIR$/Frontend/src/js/controllers/ChatListController.js" />
         <option value="$PROJECT_DIR$/Frontend/src/js/controllers/LaunchController.js" />
         <option value="$PROJECT_DIR$/Frontend/src/js/utils/TimeUtil.js" />
-        <option value="$PROJECT_DIR$/Frontend/src/js/services/ServerService.js" />
         <option value="$PROJECT_DIR$/Backend/dist/data.json" />
         <option value="$PROJECT_DIR$/Backend/src/data.json" />
         <option value="$PROJECT_DIR$/Frontend/src/css/index.scss" />
@@ -302,6 +297,8 @@
         <option value="$PROJECT_DIR$/Frontend/src/js/controllers/ChoresController.js" />
         <option value="$PROJECT_DIR$/Frontend/src/templates/dash.chat.html" />
         <option value="$PROJECT_DIR$/Frontend/src/js/controllers/DashChatController.js" />
+        <option value="$PROJECT_DIR$/Backend/src/ServerEnv.js" />
+        <option value="$PROJECT_DIR$/Frontend/src/js/services/ServerService.js" />
       </list>
     </option>
   </component>
@@ -779,12 +776,12 @@
       <workItem from="1477597046012" duration="6541000" />
       <workItem from="1477610561496" duration="16000" />
       <workItem from="1477610580440" duration="32180000" />
-      <workItem from="1478149120272" duration="32367000" />
+      <workItem from="1478149120272" duration="32410000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71104000" />
+    <option name="totallyTimeSpent" value="71147000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="741" extended-state="0" />
@@ -827,7 +824,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Boilerplate-Node-Express-Angular1-SCSS-Gulp/Backend/dist/server.js" />
     <entry file="file://$PROJECT_DIR$/../Boilerplate-Node-Express-Angular1-SCSS-Gulp/package.json" />
     <entry file="file://$PROJECT_DIR$/../Boilerplate-Node-Express-Angular1-SCSS-Gulp/Backend/src/server.js" />
     <entry file="file://$PROJECT_DIR$/../Boilerplate-Node-Express-Angular1-SCSS-Gulp/Backend/dist/public/css/index.css" />
@@ -917,14 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="2332" selection-start-line="0" selection-start-column="2332" selection-end-line="0" selection-end-column="2332" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Backend/src/ServerEnv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -1066,14 +1054,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/src/js/services/ServerService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Backend/src/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
@@ -1120,6 +1100,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="63" column="45" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/dist/ServerEnv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Backend/src/ServerEnv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/src/js/services/ServerService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
           <folding />
         </state>
       </provider>
