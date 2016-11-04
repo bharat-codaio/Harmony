@@ -760,8 +760,8 @@ li {
   }
 
   .item-time{
-    width: 15%;
-    padding-right:15px;
+    width: 25%;
+    padding-right:0px;
   }
 
 
@@ -774,6 +774,7 @@ li {
   min-height: 500px;
   width: 75%;
   top: 100px;
+  margin-top: -40px !important;
 }
 
 .button-overlay{

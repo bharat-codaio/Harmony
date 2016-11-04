@@ -6,7 +6,7 @@
 
     angular
         .module('app', ['ui.router', 'ngMaterial', 'ngMessages'])
-        .run(($http) =>{
+        .run(($http, $rootScope) =>{
             $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
             // Toast Options
@@ -15,7 +15,11 @@
             toastr.options.hideDuration = 500;
             toastr.options.timeOut = 3000;
 
+            jQuery('#datetimepicker').datetimepicker();
+
             console.log("This is app run");
+
+            $rootScope.userId = 0;
 
         })
         .config(($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider)=>{
@@ -23,6 +27,7 @@
 
             console.log("This is app config");
 
+            //$rootScope.userId = 0;
 
             const launch = {
                 name: 'launch',

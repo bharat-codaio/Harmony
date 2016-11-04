@@ -67,25 +67,35 @@ app.listen(PORT, function(){
     console.log("Listening on Port " + PORT);
 
     let data = fs.readFileSync(path.join(__dirname, 'data.json'));
-        console.log("reading");
-        parsed = JSON.parse(data);
-        console.log(JSON.stringify(parsed, null, 2));
+    parsed = JSON.parse(data);
 });
 
-app.post('/api', function(req, res){
-   let name = req.body.name;
-    console.log("name");
-    res.send({hey: "fuck you"});
-});
 
 app.post('/users/all', function(req, res){
     res.send(parsed.Users);
 });
 
-// app.post("/users",function(req, res){
-//     // return the collection of users from the db
-//     res.send(usersCollection);
-// });
+/*
+TODO: Edit to make this work for the household
+ */
+//get all chores for this user
+app.post("/chores/get",function(req, res){
+    let userId = req.body.userId;
+    console.log(req.body);
+    // let chores = parsed.Chores.filter(chore => chore.owner === userId);
+    let chores = parsed.Chores;
+    res.send(chores);
+});
+
+//add a new chore
+app.post("/chores/add", function(req, res){
+    let chore = req.body.chore;
+    parsed.Chores.push(chore);
+    console.log(parsed.Chores)
+    res.send(parsed.Chores);
+});
+
+
 //
 // app.post("/houses",function(req, res){
 //     // return the collection of houses from the db

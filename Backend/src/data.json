@@ -2,6 +2,7 @@
   "Chats": [
     {
       "id": 0,
+      "threadId": 0,
       "date": "2016-02-11T16:30:00.000Z",
       "from": 0,
       "to": 1,
@@ -9,6 +10,7 @@
     },
     {
       "id": 1,
+      "threadId": 0,
       "date": "2016-02-11T16:31:00.000Z",
       "from": 1,
       "to": 0,
@@ -16,6 +18,7 @@
     },
     {
       "id": 2,
+      "threadId": 0,
       "date": "2016-02-11T16:32:00.000Z",
       "from": 1,
       "to": 0,
@@ -23,6 +26,7 @@
     },
     {
       "id": 3,
+      "threadId": 0,
       "date": "2016-02-11T16:33:00.000Z",
       "from": 0,
       "to": 1,
@@ -30,6 +34,7 @@
     },
     {
       "id": 4,
+      "threadId": 1,
       "date": "2016-02-11T16:34:00.000Z",
       "from": 0,
       "to": 1,
@@ -37,6 +42,7 @@
     },
     {
       "id": 5,
+      "threadId": 1,
       "date": "2016-02-11T16:35:00.000Z",
       "from": 1,
       "to": 0,
@@ -50,8 +56,8 @@
       "owner": 0,
       "name": "Take out trash",
       "dateCreated": "2016-01-11T16:35:00.000Z",
-      "dateCompleted": null,
-      "datePlanned": "2016-10-11T23:59:59.999Z",
+      "dateCompleted": "2016-11-3T23:59:59.999Z",
+      "datePlanned": 1478243439000,
       "negativeFeedbackList": [null],
       "description": "Take the trash out when you can to the green dumpster behind the alleyway.",
       "participants": [0,1],
@@ -65,10 +71,40 @@
       "name": "Wash Dishes",
       "dateCreated": "2016-01-11T16:35:00.000Z",
       "dateCompleted": null,
-      "datePlanned": "2016-03-11T23:59:59.999Z",
+      "datePlanned": 1478349499000,
       "negativeFeedbackList": [null],
       "description": "Wash the dishes and dry with the white towel then put away",
       "participants": [0,1],
+      "frequency": "daily",
+      "scheduling": "random",
+      "current": [0]
+    }
+  ,
+    {
+      "id": 2,
+      "owner": 2,
+      "name": "Clean Carport",
+      "dateCreated": "2016-01-11T16:35:00.000Z",
+      "dateCompleted": 1478249499000,
+      "datePlanned": 1478249499000,
+      "negativeFeedbackList": [null],
+      "description": "Wash the dishes and dry with the white towel then put away",
+      "participants": [2],
+      "frequency": "daily",
+      "scheduling": "random",
+      "current": [0]
+    }
+    ,
+    {
+      "id": 3,
+      "owner": 2,
+      "name": "Get Fridge Repaired",
+      "dateCreated": "2016-01-11T16:35:00.000Z",
+      "dateCompleted": null,
+      "datePlanned": 1477049499000,
+      "negativeFeedbackList": [null],
+      "description": "Wash the dishes and dry with the white towel then put away",
+      "participants": [2],
       "frequency": "daily",
       "scheduling": "random",
       "current": [0]
@@ -106,7 +142,7 @@
       "email": "sallythebest@mail.com",
       "password": "hunter22",
       "photo": "www.someurlthatnoonewants.com/picture1.jpg",
-      "housesDwelled" : [0]
+      "housesDwelled" : [0,1]
     },
     {
       "id" : 1,

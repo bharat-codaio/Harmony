@@ -8,11 +8,13 @@
         .module('app')
         .controller('LaunchController', LaunchController);
 
-    LaunchController.$inject = ['$state'];
+    LaunchController.$inject = ['$state', '$rootScope'];
 
-    function LaunchController($state){
+    function LaunchController($state, $rootScope){
 
         const vm = this;
+
+        $rootScope.userId = 0;
 
         vm.tryLogin = tryLogin;
 

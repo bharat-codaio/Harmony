@@ -26,7 +26,5 @@
             toastr.warning("Add Chat functionality not available yet")
         }
 
-
-
     }
 })();
