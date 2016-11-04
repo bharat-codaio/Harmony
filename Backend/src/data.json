@@ -2,6 +2,7 @@
   "Chats": [
     {
       "id": 0,
+      "threadId": 0,
       "date": "2016-02-11T16:30:00.000Z",
       "from": 0,
       "to": 1,
@@ -9,6 +10,7 @@
     },
     {
       "id": 1,
+      "threadId": 0,
       "date": "2016-02-11T16:31:00.000Z",
       "from": 1,
       "to": 0,
@@ -16,6 +18,7 @@
     },
     {
       "id": 2,
+      "threadId": 0,
       "date": "2016-02-11T16:32:00.000Z",
       "from": 1,
       "to": 0,
@@ -23,6 +26,7 @@
     },
     {
       "id": 3,
+      "threadId": 0,
       "date": "2016-02-11T16:33:00.000Z",
       "from": 0,
       "to": 1,
@@ -30,6 +34,7 @@
     },
     {
       "id": 4,
+      "threadId": 1,
       "date": "2016-02-11T16:34:00.000Z",
       "from": 0,
       "to": 1,
@@ -37,6 +42,7 @@
     },
     {
       "id": 5,
+      "threadId": 1,
       "date": "2016-02-11T16:35:00.000Z",
       "from": 1,
       "to": 0,
@@ -106,7 +112,7 @@
       "email": "sallythebest@mail.com",
       "password": "hunter22",
       "photo": "www.someurlthatnoonewants.com/picture1.jpg",
-      "housesDwelled" : [0]
+      "housesDwelled" : [0,1]
     },
     {
       "id" : 1,
