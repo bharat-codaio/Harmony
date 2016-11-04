@@ -31,6 +31,13 @@
         vm.newChore = {};
         vm.assignToMe = false;
 
+        vm.callOut = function(chore){
+          toastr.warning("Calling out " + chore.assigneeName);
+        };
+
+        vm.remind = function(chore){
+          toastr.warning("Sent a reminder to " + chore.assigneeName + " to " + chore.name);
+        };
 
         let obj = {userId : $rootScope.userId};
 

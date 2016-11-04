@@ -49,7 +49,7 @@
                     <P class="post-username">{{chore.assigneeName}}</P>
                     <P class="post-last-message">{{chore.name}}</P>
                     <P class="post-time">{{chore.time}}</P>
-                    <P class="post-action">Disagree?</P>
+                    <P class="post-action" ng-click="chores.callOut(chore)">Disagree?</P>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                     <P class="post-username">{{chore.assigneeName}}</P>
                     <P class="post-last-message">{{chore.name}}</P>
                     <P class="post-time">{{chore.time}}</P>
-                    <P class="post-action">Remind?</P>
+                    <P class="post-action" ng-click="chores.remind(chore)">Remind?</P>
                 </div>
             </div>
         </div>

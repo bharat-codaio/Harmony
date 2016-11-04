@@ -47,7 +47,7 @@
 
         function toggleAlarm() {
             //vm.showNotifications = !vm.showNotifications;
-            toastr.warning("Ability to view notifications not available yet");
+            toastr.warning("No New Notifications!");
             console.log("Show Notifications " +  vm.showNotifications);
         }
 
@@ -61,7 +61,7 @@
         }
 
         function addHousemate(){
-            toastr.warning("Ability to add new housemate coming soon!");
+            toastr.warning("Nothing Here Yet!");
         }
     }
 })();
