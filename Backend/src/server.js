@@ -23,7 +23,7 @@ switch (SERVER_ENV.ENV) {
 
 // Initialize the express application
 var app = express();
-
+var parsed = {};
 // Initialize Firebase
 // var firebase = require("firebase");
 
@@ -68,8 +68,18 @@ app.listen(PORT, function(){
 
     let data = fs.readFileSync(path.join(__dirname, 'data.json'));
         console.log("reading");
-        var parsed = JSON.parse(data);
+        parsed = JSON.parse(data);
         console.log(JSON.stringify(parsed, null, 2));
+});
+
+app.post('/api', function(req, res){
+   let name = req.body.name;
+    console.log("name");
+    res.send({hey: "fuck you"});
+});
+
+app.post('/users/all', function(req, res){
+    res.send(parsed.Users);
 });
 
 // app.post("/users",function(req, res){
