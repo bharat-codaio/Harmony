@@ -15,6 +15,8 @@ var path = require('path');
 var PathsBackend = {
     es6: ['./Backend/src/**/*.js'],
     es5: './Backend/dist',
+    json: ['./Backend/src/**/*.json'],
+    jsonPublic: './Backend/dist',
     sourceRoot: path.join(__dirname, 'src')
 };
 
@@ -29,7 +31,22 @@ gulp.task('BabelBackend', function() {
 gulp.task('watchBackend', function() {
     gulp.watch(PathsBackend.es6, ['BabelBackend'])
 });
-gulp.task('Backend', ['watchBackend', 'BabelBackend']);
+
+gulp.task('BackendJson', function(){
+    return gulp
+        .src(PathsBackend.json)
+        .pipe(gulp.dest(PathsBackend.jsonPublic));
+});
+
+gulp.task('watchBackendJson', function(){
+    gulp.watch(PathsBackend.img, ['BackendJson']);
+});
+
+gulp.task('watchFrontendImg', function() {
+    gulp.watch([PathsFrontEnd.img], ['FrontendImg'])
+});
+
+gulp.task('Backend', ['watchBackend', 'BabelBackend', 'watchBackendJson', 'BackendJson']);
 
 
 
@@ -136,9 +153,8 @@ gulp.task('FrontendImg', function() {
         .pipe(gulp.dest(PathsFrontEnd.imgDirectory))
 });
 
-gulp.task('watchFrontendImg', function() {
-    gulp.watch([PathsFrontEnd.img], ['FrontendImg'])
-});
+
+
 
 
 gulp.task('default', ['Frontend', 'Backend']);

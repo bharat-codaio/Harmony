@@ -1,0 +1,154 @@
+{
+  "Chats": [
+    {
+      "id": 0,
+      "date": "2016-02-11T16:30:00.000Z",
+      "from": 0,
+      "to": 1,
+      "message": "Hello, did you see the new chore?"
+    },
+    {
+      "id": 1,
+      "date": "2016-02-11T16:31:00.000Z",
+      "from": 1,
+      "to": 0,
+      "message": "yes i saw it. did you include billy?"
+    },
+    {
+      "id": 2,
+      "date": "2016-02-11T16:32:00.000Z",
+      "from": 1,
+      "to": 0,
+      "message": "i wont be able to complete it until tomorrow"
+    },
+    {
+      "id": 3,
+      "date": "2016-02-11T16:33:00.000Z",
+      "from": 0,
+      "to": 1,
+      "message": "yes i did add billy. thats okay"
+    },
+    {
+      "id": 4,
+      "date": "2016-02-11T16:34:00.000Z",
+      "from": 0,
+      "to": 1,
+      "message": "just mark it complete and it will reassign someone else"
+    },
+    {
+      "id": 5,
+      "date": "2016-02-11T16:35:00.000Z",
+      "from": 1,
+      "to": 0,
+      "message": "wow that is really neat!"
+    }
+  ],
+
+  "Chores": [
+    {
+      "id": 0,
+      "owner": 0,
+      "name": "Take out trash",
+      "dateCreated": "2016-01-11T16:35:00.000Z",
+      "dateCompleted": null,
+      "datePlanned": "2016-10-11T23:59:59.999Z",
+      "negativeFeedbackList": [null],
+      "description": "Take the trash out when you can to the green dumpster behind the alleyway.",
+      "participants": [0,1],
+      "frequency": "on_complete",
+      "scheduling": "round_robin",
+      "current": [1]
+    },
+    {
+      "id": 1,
+      "owner": 0,
+      "name": "Wash Dishes",
+      "dateCreated": "2016-01-11T16:35:00.000Z",
+      "dateCompleted": null,
+      "datePlanned": "2016-03-11T23:59:59.999Z",
+      "negativeFeedbackList": [null],
+      "description": "Wash the dishes and dry with the white towel then put away",
+      "participants": [0,1],
+      "frequency": "daily",
+      "scheduling": "random",
+      "current": [0]
+    }
+  ],
+
+  "Notifications": [
+    {
+      "id": 0,
+      "for": 0,
+      "type": "chore",
+      "name": "Wash dishes",
+      "description": "You have a new chore!",
+      "date": "2016-02-11T23:59:59.999Z",
+      "status": "unread"
+    },
+    {
+      "id": 1,
+      "for": 1,
+      "type": "chore",
+      "name": "Take out the Trash",
+      "description": "You have a new chore!",
+      "date": "2016-02-11T23:59:59.999Z",
+      "status": "unread"
+    }
+
+  ],
+
+  "Users" : [
+    {
+      "id" : 0,
+      "nickname" : "Sally",
+      "firstname": "Sallymantha",
+      "lastname": "Theowner",
+      "email": "sallythebest@mail.com",
+      "password": "hunter22",
+      "photo": "www.someurlthatnoonewants.com/picture1.jpg",
+      "housesDwelled" : [0]
+    },
+    {
+      "id" : 1,
+      "nickname" : "Jimmy",
+      "firstname": "James",
+      "lastname": "Carmanperson",
+      "email": "itsrickjames@mail.com",
+      "password": "password",
+      "photo": "www.someurlthatnoonewants.com/picture0.jpg",
+      "housesDwelled" : [0]
+    },
+    {
+      "id" : 2,
+      "nickname" : "Billy",
+      "firstname": "Hamelton",
+      "lastname": "Thegreat",
+      "email": "ownsacastle@mail.com",
+      "password": "string",
+      "photo": "www.someurlthatnoonewants.com/picture1.jpg",
+      "housesDwelled" : [0]
+    }
+  ],
+
+
+  "Houses": [
+    {
+
+      "id" : 0,
+      "nickname": "Home",
+      "address": "1234 Fake Street, Nowhere, CA 55555",
+      "photo": "picture",
+      "dwellers": [0,1,2],
+      "owner":[2]
+    },
+    {
+
+      "id" : 1,
+      "nickname": "The Crib",
+      "address": "9999 Faker Street, Nowhere, CA 55555",
+      "photo": "picture",
+      "dwellers": [0],
+      "owner":[0]
+    }
+  ]
+}
