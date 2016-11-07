@@ -95,6 +95,73 @@ app.post("/chores/add", function(req, res){
     res.send(parsed.Chores);
 });
 
+app.post('/chat/all', function(req, res){
+    var userId = req.body.userId;
+    var threads = {};
+    console.log("working");
+    console.log(typeof(req.body.userId));
+    console.log(req.body.userId);
+    console.log(typeof(userId) + " " + userId);
+    for (let i = 0; i < parsed.Chats.length;i++){
+        if (parsed.Chats[i].to == userId ||
+            parsed.Chats[i].from == userId){
+            var index = parsed.Chats[i].threadId;
+            if (!threads[index]) {
+                threads[index] = [];
+            }
+            threads[index].push(parsed.Chats[i]);
+        }
+    }
+    console.log("about to sort!");
+    for (var thread in threads){
+        console.log("sorting");
+        threads[thread].sort(function(a,b){
+            return Date.parse(a.date) > Date.parse(b.date)} );
+    }
+
+    res.send(threads);
+});
+
+app.post('/users/all', function(req, res){
+    res.send(parsed.Users);
+});
+
+app.post('/houses/all', function(req, res){
+    let userId = req.body.userId;
+    let housesArray = [];
+    let i=0;
+    for (i=0; i<parsed.Users.length; i++) {
+        if (parsed.Users[i].id == userId) {
+            let j=0;
+            // console.log("USER LIVES IN: " + parsed.Users[i].housesDwelled);
+            for (j=0; j<parsed.Users[i].housesDwelled.length; j++) {
+                let k=0;
+                for (k=0; k<parsed.Houses.length; k++) {
+                    // console.log("HOUSE ID: " + parsed.Houses[k].id);
+                    // console.log("DWELLED: " + parsed.Users[i].housesDwelled[j]);
+                    if (parsed.Houses[k].id == parsed.Users[i].housesDwelled[j]) {
+                        housesArray.push(parsed.Houses[k]);
+                    }
+                }
+            }
+            break;
+        }
+    }
+    res.send(housesArray);
+});
+
+app.post("/chores/mine",function (req,res){
+    let userId = req.body.userId;
+    var chores = [];
+    for (var i = 0; i < parsed.Chores.length;i++){
+        for (var j = 0; j < parsed.Chores[i].participants.length;j++){
+            if (userId == parsed.Chores[i].participants[j]){
+                chores.push(parsed.Chores[i]);
+            }
+        }
+    }
+    res.send(chores);
+});
 
 //
 // app.post("/houses",function(req, res){
