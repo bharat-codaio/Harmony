@@ -1,14 +1,9 @@
 <div class="main-content">
-     <div class="box-post" ng-click="chatList.threadSelected()">
+     <div class="box-post" ng-repeat="friend in dash.friends" ng-click="chatList.threadSelected(friend)">
             <div class="post-content">
                 <img class="post-icon" src="/static/img/profile.svg" />
-                <P class="post-username">John Klinn</P>
-                <P class="post-last-message">All done, heading home!</P>
-                <P class="post-time">2:13 PM</P>
+                <P class="post-username">{{friend.firstname}} {{friend.lastname}}</P>
+                <P class="post-last-message">Click to send message</P>
             </div>
     </div>
-
-    <!--<div class="button-add">-->
-        <!--<img src="/static/img/add.svg" ng-click="chatList.addThread()"/>-->
-    <!--</div>-->
 </div>

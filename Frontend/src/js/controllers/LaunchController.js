@@ -15,6 +15,12 @@
         const vm = this;
         vm.input = {};
 
+        vm.tryLogin = tryLogin;
+        vm.toggleLaunchMode = toggleLaunchMode;
+        vm.modeLogin = true;
+        vm.trySignUp = trySignUp;
+        vm.goToDash = goToDash;
+
         const user = JSON.parse(localStorage.getItem("Harmony-user"));
         if(!!user)
         {
@@ -25,11 +31,7 @@
             $rootScope.userId = null;
         }
 
-        vm.tryLogin = tryLogin;
-        vm.toggleLaunchMode = toggleLaunchMode;
-        vm.modeLogin = true;
-        vm.trySignUp = trySignUp;
-        vm.goToDash = goToDash;
+
 
         function tryLogin(){
             ServerService

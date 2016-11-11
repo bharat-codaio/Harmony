@@ -17,9 +17,9 @@
         vm.threadSelected = threadSelected;
         vm.addThread = addThread;
 
-        function threadSelected(){
+        function threadSelected(friend){
             console.log("Thread Selected!");
-            $rootScope.$broadcast('ToggleChatMode', {mode: 'THREAD'});
+            $rootScope.$broadcast('ToggleChatMode', {mode: 'THREAD', friend: friend});
         }
 
         function addThread(){

@@ -14,7 +14,7 @@
                 <IMG class="icon-header" src="/static/img/arrow-left.svg" />
             </P>
             <P class="dash-heading" ng-show="dash.mode === 'LIST'" ng-hide="dash.mode !== 'LIST'">{{dash.selectedTab}}</P>
-            <P class="dash-heading" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'">John Klinn</P>
+            <P class="dash-heading" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'">{{dash.threadFriend.firstname}}  {{dash.threadFriend.lastname}}</P>
             <P class="kabob-menu"> <div class="logo-banner">Harmony</div> </P>
             <P class="alarm"> <IMG  class="icon-header" src="/static/img/bell.svg" ng-click="dash.toggleAlarm()" /> </P>
 

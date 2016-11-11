@@ -21,6 +21,8 @@
         vm.showNotifications = false;
         vm.addingHousemate = false;
         vm.addFriendEmail = "";
+        vm.friends = {};
+        vm.threadFriend = {};
 
 
 
@@ -51,6 +53,7 @@
                     (friends) => {
                         console.log("friends");
                         $rootScope.friends = friends;
+                        vm.friends = $rootScope.friends;
                         console.log(JSON.stringify(friends, null, 2));
                     },
                     (payload) =>{
@@ -63,6 +66,9 @@
         vm.populateFriends();
 
 
+        $rootScope.$on('ToggleChatMode', (msg, data) => {
+            vm.threadFriend = data.friend;
+        });
 
 
         $rootScope.user = {};
@@ -107,6 +113,9 @@
         }
 
         function logOut(){
+            localStorage.removeItem("Harmony-user");
+            $rootScope.userId = null;
+            $rootScope.user = {};
             $state.go('launch');
         }
 
@@ -126,12 +135,13 @@
                         friendEmail : vm.addFriendEmail
                     },
                     (payload) => {
-                        console.log(JSON.stringify(payload))
+                        console.log(JSON.stringify(payload));
                         if(!!payload.error){
                             toastr.error("Error : " + payload.error);
                         }
                         else if(!! payload.friend){
                             $rootScope.friends.push(payload.friend);
+                            vm.friends = $rootScope.friends;
                             console.log($rootScope.friends);
 
                         }

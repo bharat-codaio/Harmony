@@ -652,9 +652,11 @@ app.post("/threads/send/message",function(req,res){
     });
 
     if (threadId) {
+        console.log(threadId);
         Threads.findOne({_id: threadId}, function (err, thread) {
             if (err) throw err;
-            if (thread) {
+            if (!!thread) {
+                console.log("Found a thread");
                 thread.chats.push(newChat._id);
                 let promise = newChat.save(function (err) {
                     if (err) throw err;
@@ -674,11 +676,11 @@ app.post("/threads/send/message",function(req,res){
                     });
                 });
             } else {
-                createNewThread(userParts, newChat,res);
+                createNewThread(threadId, userParts, newChat,res);
             }
         });
     } else {
-        createNewThread(userParts,newChat,res);
+        createNewThread(threadId, userParts,newChat,res);
     }
 });
 
@@ -686,8 +688,9 @@ app.post("/threads/send/message",function(req,res){
 /******
  * Helper function
  */
-var createNewThread = function(userParts,newChat,res){
+var createNewThread = function(threadId, userParts,newChat,res){
     var newThread = Threads({
+        _id: threadId,
         participants: userParts,
         chats: []
     });
@@ -720,6 +723,10 @@ app.post("/threads/get",function(req,res){
         function(err, threads){
             if (err) throw err;
 
+            if(!!threads){
+
+            }
+
             res.send(threads);
         });
 
@@ -744,7 +751,7 @@ app.post("/threads/get/chat",function(req,res){
                 var tosend = {
                     thread: thread,
                     chats: chats
-                }
+                };
 
                 res.send(tosend);
             });
