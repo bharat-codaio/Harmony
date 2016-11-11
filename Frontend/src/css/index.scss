@@ -777,6 +777,20 @@ li {
   margin-top: -40px !important;
 }
 
+.card-overlay-small{
+  @extend  .card;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  z-index: 2100;
+  width: 51%;
+  position: fixed !important;
+  left: 50px !important;
+  right: 50px !important;
+  top: 150px !important;
+  min-height: 200px;
+}
+
 .button-overlay{
   @extend .button-round;
   margin-left: 39%;

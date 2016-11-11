@@ -9,9 +9,9 @@
         .controller('DashChatController', DashChatController);
 
 
-    DashChatController.$inject = ['$state', '$rootScope'];
+    DashChatController.$inject = ['$state', '$rootScope', 'ServerService'];
 
-    function DashChatController($state, $rootScope){
+    function DashChatController($state, $rootScope, ServerService){
         console.log("dash chat controller active");
         const vm = this;
         vm.mode = "LIST";
@@ -19,6 +19,55 @@
         vm.showDrawer = false;
         vm.showKabobDrop = false;
         vm.showNotifications = false;
+        vm.addingHousemate = false;
+        vm.addFriendEmail = "";
+
+
+
+        if(!$rootScope.userId){
+            console.log("in branch");
+            const user = JSON.parse(localStorage.getItem("Harmony-user"));
+            if(!!user)
+            {
+                console.log("found user in LS");
+                console.log(JSON.stringify(user, null,2));
+                $rootScope.userId = user._id;
+                $rootScope.user = user;
+            }else{
+                $rootScope.userId = null;
+                $rootScope.user = null;
+                $state.go("launch");
+            }
+        }else{
+            console.log("somehow it is defined");
+            console.log($rootScope.userId);
+        }
+
+        $rootScope.friends = {};
+        vm.populateFriends = function(){
+            ServerService
+                .post('/users/get/friends',
+                {userId : $rootScope.userId},
+                    (friends) => {
+                        console.log("friends");
+                        $rootScope.friends = friends;
+                        console.log(JSON.stringify(friends, null, 2));
+                    },
+                    (payload) =>{
+                        console.log("ERROR ACQUIRING FRIENDS");
+                        console.log(JSON.stringify(payload, null, 2));
+                    }
+
+                );
+        };
+        vm.populateFriends();
+
+
+
+
+        $rootScope.user = {};
+        $rootScope.user.friends = [];
+
 
         $rootScope.$on('ToggleChatMode', (data, msg)=>{
             vm.mode=msg.mode;
@@ -30,6 +79,7 @@
         vm.backToList = backToList;
         vm.switchTab = switchTab;
         vm.logOut = logOut;
+        vm.toggleAddingHousemate = toggleAddingHousemate;
         vm.addHousemate = addHousemate;
 
         function backToList(){
@@ -60,8 +110,43 @@
             $state.go('launch');
         }
 
-        function addHousemate(){
-            toastr.warning("Nothing Here Yet!");
+        function toggleAddingHousemate(){
+            vm.addingHousemate = !vm.addingHousemate;
+
+            if(vm.showDrawer){
+                vm.showDrawer = !vm.showDrawer;
+            }
+            // toastr.warning("Nothing Here Yet!");
         }
+
+        function addHousemate(){
+            ServerService
+                .post("/users/add/friend", {
+                        userId : $rootScope.userId,
+                        friendEmail : vm.addFriendEmail
+                    },
+                    (payload) => {
+                        console.log(JSON.stringify(payload))
+                        if(!!payload.error){
+                            toastr.error("Error : " + payload.error);
+                        }
+                        else if(!! payload.friend){
+                            $rootScope.friends.push(payload.friend);
+                            console.log($rootScope.friends);
+
+                        }
+                        else {
+                            console.log("no friends to show");
+                        }
+
+                        vm.addingHousemate = false;
+                    },
+                    (msg) => {
+                        toastr.error("Server Error");
+                        vm.addingHousemate = false;
+                    }
+                );
+        }
+
     }
 })();

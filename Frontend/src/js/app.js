@@ -19,7 +19,6 @@
 
             console.log("This is app run");
 
-            $rootScope.userId = 0;
 
         })
         .config(($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider)=>{

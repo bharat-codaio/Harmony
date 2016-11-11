@@ -47,7 +47,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="drawer-bottom-tray" ng-click="dash.addHousemate()">
+                    <div id="drawer-bottom-tray" ng-click="dash.toggleAddingHousemate()">
                         <IMG src="/static/img/add-friend.svg" class="add-friend" />
                         <P>
                             Invite Housemates
@@ -81,6 +81,21 @@
             <div ui-view="chores"></div>
         </div>
     </div>
+
+    <div ng-show="dash.addingHousemate" class="overlay" ng-click="dash.toggleAddingHousemate()">
+
+    </div>
+
+    <div class="card-overlay-small" ng-show="dash.addingHousemate">
+        <div class="box-floating_input">
+            <input name="friendEmail" type="text" id="friendEmail"
+                   ng-model="dash.addFriendEmail" required>
+            <label for="friendEmail">Email</label>
+            <span class="bar"></span>
+        </div>
+        <a class="button-round" ng-click="dash.addHousemate()">Invite</a>
+    </div>
+
 
 
 

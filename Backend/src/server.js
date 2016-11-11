@@ -238,64 +238,80 @@ app.post('/users/create', function(req, res){
  *   Output: [] or array of Users
  */
 app.post('/users/add/friend',function(req,res){
-    let friendId = req.body.friendId;
+    let friendEmail = req.body.friendEmail;
     let userId = req.body.userId;
 
-    if (userId && friendId) {
+    if (!!userId && !!friendEmail) {
 
         Users.findOne({_id: userId}, function (err, user) {
             if (err) throw err;
             if (user) {
-                Users.findOne({_id: friendId}, function (err, friend) {
-                    if (err) throw err;
-                    if (friend){
 
+                Users.find({email: friendEmail}, function (err, friends) {
+                    if (err) throw err;
+                    if (!!friends[0]){
+
+                        let friend = friends[0]
                         var nodups = true;
                         console.log(user.friends);
-                        for (var i = 0; i < user.friends.length; i++){
-                            if (user.friends[i] == friend._id){
-                                nodups = false;
+                        if(!!user.friends){
+                            for (var i = 0; i < user.friends.length; i++){
+                                if (user.friends[i] == friend._id){
+                                    nodups = false;
+                                }
                             }
                         }
+
+
                         if (nodups){
                             user.friends.push(friend._id);
                         }
 
                         nodups = true;
 
-                        for (var i = 0; i < friend.friends.length; i++){
-                            if (friend.friends[i] == user._id){
-                                nodups = false;
+                        if(!!friend.friends){
+                            for (var i = 0; i < friend.friends.length; i++){
+                                if (friend.friends[i] == user._id){
+                                    nodups = false;
+                                }
                             }
+                        }else{
+
                         }
+
 
                         if (nodups) {
                             friend.friends.push(user._id);
-                        }
-
-                        let promise = user.save(function(err){
-                            if (err) throw err;
-
-                            let promise = friend.save(function(err){
+                            let promise = user.save(function(err){
                                 if (err) throw err;
 
-                                var tosend = [];
+                                let promise = friend.save(function(err){
+                                    if (err) throw err;
 
-                                tosend.push(friend);
-                                tosend.push(user);
-                                res.send(tosend);
+                                    var tosend = [];
+
+                                    tosend.push(friend);
+                                    tosend.push(user);
+                                    res.send({user : user, friend : friend});
+                                });
                             });
-                        });
+                        }
+                        else{
+                            res.send({error : "User already in Household"});
+                        }
+
+
+
                     } else {
-                        res.send(user);
+                        res.send({error: "Friend Not Found"});
                     }
                 });
             } else {
-                res.send([]);
+                res.send({error: "User Not Found"});
             }
         });
     } else {
-        res.send([]);
+        res.send({error: "Incorrect Request", code: 500});
     }
 });
 
@@ -371,13 +387,20 @@ app.post('/users/get/friends', function(req,res){
     let userId = req.body.userId;
 
     if (userId) {
-        Users.find({friends: {$elemMatch: {$eq: userId}}}, function(err, friend){
+        Users.find({friends: {$elemMatch: {$eq: userId}}}, function(err, friends){
             if (err) throw err;
 
-            res.send(friend);
+            if(!!friends){
+                res.send(friends);
+            }
+            else{
+                res.send([])
+            }
+
+
         });
     } else {
-        res.send([]);
+        res.send({error : "Incorrect request", code: 500});
     }
 });
 

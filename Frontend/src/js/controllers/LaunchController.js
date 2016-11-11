@@ -15,7 +15,15 @@
         const vm = this;
         vm.input = {};
 
-        $rootScope.userId = 0;
+        const user = JSON.parse(localStorage.getItem("Harmony-user"));
+        if(!!user)
+        {
+            $rootScope.userId = user._id;
+            $rootScope.user = user;
+            vm.goToDash();
+        }else{
+            $rootScope.userId = null;
+        }
 
         vm.tryLogin = tryLogin;
         vm.toggleLaunchMode = toggleLaunchMode;
@@ -29,6 +37,7 @@
                     {email : vm.input.email, password : vm.input.password},
                     (user)=>{
                         if(!! user._id){
+                            localStorage.setItem("Harmony-user", JSON.stringify(user));
                             $rootScope.userId = user._id;
                             console.log(user._id);
                             vm.goToDash();
@@ -55,6 +64,7 @@
                         console.log("sign up success");
 
                         if(!! user._id){
+                            localStorage.setItem("Harmony-user", JSON.stringify(user));
                             $rootScope.userId = user._id;
                             console.log(user._id);
                             vm.goToDash();
