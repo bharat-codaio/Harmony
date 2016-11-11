@@ -11,6 +11,20 @@
                         <H1 class="logo-banner">Harmony</H1>
                 </div>
                 <div id="box-input">
+                    <div class="box-floating_input" ng-show="!launch.modeLogin">
+                    <input name="firstname" type="text" id="firstname"
+                           ng-model="launch.input.firstname" required>
+                    <label for="firstname">First Name</label>
+                    <span class="bar"></span>
+                    </div>
+                    <br>
+                    <div class="box-floating_input" ng-show="!launch.modeLogin">
+                        <input name="lastname" type="text" id="lastname"
+                               ng-model="launch.input.lastname" required>
+                        <label for="lastname">Last Name</label>
+                        <span class="bar"></span>
+                    </div>
+                    <br>
                     <div class="box-floating_input">
                         <input name="email" type="text" id="email"
                                ng-model="launch.input.email" required>
@@ -24,7 +38,10 @@
                         <label for="password">Password</label>
                         <span class="bar"></span>
                     </div>
-                    <a class="button-round" ng-click="launch.tryLogin()">Log In</a>
+                    <a class="button-round" ng-show="launch.modeLogin" ng-click="launch.tryLogin()">Log In</a>
+                    <a class="button-round-alternative" ng-show="launch.modeLogin" ng-click="launch.toggleLaunchMode()">Sign Up?</a>
+                    <a class="button-round" ng-show="!launch.modeLogin" ng-click="launch.trySignUp()">Sign Up</a>
+                    <a class="button-round-alternative" ng-show="!launch.modeLogin" ng-click="launch.toggleLaunchMode()">Go Back</a>
                 </div>
             </div>
         </div>

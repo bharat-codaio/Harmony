@@ -599,7 +599,7 @@ li {
 
     padding: 0 12px;
 
-    margin-top: 22px;
+    margin-top: -6px;
 
     @media #{$desktop} {
       width: 500px;
@@ -782,3 +782,7 @@ li {
   margin-left: 39%;
 }
 
+.button-round-alternative{
+  @extend .button-round;
+  background-color: $color-primary;
+}

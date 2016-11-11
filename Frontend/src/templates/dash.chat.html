@@ -17,7 +17,6 @@
             <P class="dash-heading" ng-show="dash.mode === 'THREAD'" ng-hide="dash.mode !== 'THREAD'">John Klinn</P>
             <P class="kabob-menu"> <div class="logo-banner">Harmony</div> </P>
             <P class="alarm"> <IMG  class="icon-header" src="/static/img/bell.svg" ng-click="dash.toggleAlarm()" /> </P>
-            <!--<P class="kabob-menu"> <IMG class="icon-header" src="/static/img/kabob.svg" ng-click="dash.toggleKabob()"/> </P>-->
 
         </div>
     </div>
@@ -39,19 +38,19 @@
                         </div>
                     </div>
                     <div id="drawer-payment">
-                        <!--<div class="flex-row">-->
-                            <!--<div class="r" ng-click="dash.goToSettings()">-->
-                                <!--<IMG src="/static/img/settings.svg" class="credit-card"/>-->
-                                <!--<P>-->
-                                    <!--Settings-->
-                                <!--</P>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                        <div class="flex-row">
+                            <div class="r" ng-click="dash.logOut()">
+                                <IMG src="/static/img/power-button.svg" class="credit-card"/>
+                                <P>
+                                    Log Out
+                                </P>
+                            </div>
+                        </div>
                     </div>
                     <div id="drawer-bottom-tray" ng-click="dash.addHousemate()">
                         <IMG src="/static/img/add-friend.svg" class="add-friend" />
                         <P>
-                            Welcome To Harmony
+                            Invite Housemates
                         </P>
                     </div>
                 </div>

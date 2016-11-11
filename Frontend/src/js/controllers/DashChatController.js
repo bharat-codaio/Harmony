@@ -29,7 +29,7 @@
         vm.toggleAlarm = toggleAlarm;
         vm.backToList = backToList;
         vm.switchTab = switchTab;
-        vm.goToSettings = goToSettings;
+        vm.logOut = logOut;
         vm.addHousemate = addHousemate;
 
         function backToList(){
@@ -56,8 +56,8 @@
             vm.selectedTab = tab;
         }
 
-        function goToSettings(){
-            toastr.warning("Settings functionality coming soon!")
+        function logOut(){
+            $state.go('launch');
         }
 
         function addHousemate(){

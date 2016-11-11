@@ -1,5 +1,6 @@
 /**
  * Created by bharatbatra on 10/27/16.
+ * Heavily modified by Vladimir Klimkiv 11/09/2016
  */
 'use strict';
 
@@ -24,19 +25,99 @@ switch (SERVER_ENV.ENV) {
 // Initialize the express application
 var app = express();
 var parsed = {};
-// Initialize Firebase
-// var firebase = require("firebase");
 
-// var fb_config = {
-//     apiKey: "AIzaSyDqn7Fcr_DllpVKwU0Ufnii0-WhezyjPMo",
-//     authDomain: "harmony-dd866.firebaseapp.com",
-//     databaseURL: "https://harmony-dd866.firebaseio.com",
-//     storageBucket: "harmony-dd866.appspot.com",
-//     messagingSenderId: "201771819246"
-// };
-// firebase.initializeApp(fb_config);
+//Database stuff
+var mongoose = require('mongoose');
 
-// var db = firebase.database();
+//TODO: Connect to the server, this needs to be changed
+var mongodburl = 'mongodb://localhost/Harmony';
+mongoose.connect(mongodburl);
+var db = mongoose.connection;
+var usersSchema,
+    Users,
+    housesSchema,
+    Houses,
+    notificationsSchema,
+    Notifications,
+    choresSchema,
+    Chores,
+    chatsSchema,
+    Chats,
+    threadsSchema,
+    Threads;
+
+db.on('error', console.error);
+db.once('open', function(){
+    /*  TODO: finish the schemas and models
+     Add new fields as the need arises
+     */
+    console.log("Building Schemas");
+    usersSchema = new mongoose.Schema({
+        nickname: String,
+        firstname: String,
+        lastname: String,
+        email: {type : String, unique : true },
+        password: String,
+        photo: String,
+        housesDwelled: [String],
+        friends: [String]
+    });
+
+    Users = mongoose.model('Users', usersSchema);
+
+    housesSchema = new mongoose.Schema({
+        nickname: String,
+        address: String, //TODO: turn into an Address object
+        photo: String,
+        dwellers: [String],
+        owner: [String]
+    });
+
+    Houses = mongoose.model('Houses', housesSchema);
+
+    //TODO: for notifications, just delete them when the user has seen them?
+    notificationsSchema = new mongoose.Schema({
+        for: String,
+        type: String,
+        name: String,
+        description: String,
+        date: String,
+        status: String //TODO: change to an enum type? This can be easy to change later
+    });
+
+    Notifications = mongoose.model('Notifications',notificationsSchema);
+
+    choresSchema = new mongoose.Schema({
+        owner: String,
+        name: String,
+        dateCreated: String,
+        dateCompleted: String,
+        datePlanned: Number,
+        negativeFeedbackList: [String], //TODO: not sure what goes in here
+        description: String,
+        participants: [String],
+        frequency: String, //TODO: change to enum
+        scheduling: String, //TODO: change to enum
+        current: [String]
+    });
+    Chores = mongoose.model('Chores',choresSchema);
+
+    chatsSchema = new mongoose.Schema({
+        date: String,
+        from: String,
+        message: String
+    });
+
+    Chats = mongoose.model('Chats', chatsSchema);
+
+    threadsSchema = new mongoose.Schema({
+        participants: [String],
+        chats: [String]
+    });
+
+    Threads = mongoose.model('Threads', threadsSchema);
+    console.log("Finished building schemas!");
+});
 
 var fs = require('fs');
 
@@ -70,99 +151,972 @@ app.listen(PORT, function(){
     parsed = JSON.parse(data);
 });
 
+/***********************************
+ * Users Endpoints
+ **********************************/
 
+
+/******
+ *   Output: [] or array of Users
+ */
 app.post('/users/all', function(req, res){
-    res.send(parsed.Users);
+
+    Users.find({}, function(err,users){
+        if (err) throw err;
+        res.send(users);
+    });
 });
 
-/*
-TODO: Edit to make this work for the household
+/******
+ *   Output: [] or array of Users
  */
-//get all chores for this user
+app.post('/users/login', function(req, res){
+
+    let userEmail = req.body.email;
+    let userPassword = req.body.password;
+    Users.find({email: userEmail, password: userPassword}, function(err,users){
+        if (err) throw err;
+        if(!!users[0]){
+            res.send(users);
+        }
+        else{
+            res.send(null);
+        }
+
+
+    });
+});
+
+
+/******
+ *   Output: [] or array of Users
+ */
+app.post('/users/create', function(req, res){
+    let userNickname = req.body.nickname;
+    let userFirstname = req.body.firstname;
+    let userLastname = req.body.lastname;
+    let userEmail = req.body.email;
+    let userPassword = req.body.password;
+    let userPhoto = req.body.photo;
+
+    var newUser = Users({
+        nickname : userNickname,
+        firstname: userFirstname,
+        lastname: userLastname,
+        email: userEmail,
+        password: userPassword,
+        photo: userPhoto,
+        housesDwelled : [],
+        friends: []
+    });
+
+    try {
+        var promise = newUser.save(function (err) {
+            if (err) {
+                console.log(err);
+                res.send({error: 500});
+            }
+            else {
+                console.log("Created new user");
+                res.send(newUser);
+            }
+
+
+        });
+    }
+    catch(err){
+        console.log(err);
+        res.send({error: 500});
+    }
+});
+
+/******
+ *   Output: [] or array of Users
+ */
+app.post('/users/add/friend',function(req,res){
+    let friendId = req.body.friendId;
+    let userId = req.body.userId;
+
+    if (userId && friendId) {
+
+        Users.findOne({_id: userId}, function (err, user) {
+            if (err) throw err;
+            if (user) {
+                Users.findOne({_id: friendId}, function (err, friend) {
+                    if (err) throw err;
+                    if (friend){
+
+                        var nodups = true;
+                        console.log(user.friends);
+                        for (var i = 0; i < user.friends.length; i++){
+                            if (user.friends[i] == friend._id){
+                                nodups = false;
+                            }
+                        }
+                        if (nodups){
+                            user.friends.push(friend._id);
+                        }
+
+                        nodups = true;
+
+                        for (var i = 0; i < friend.friends.length; i++){
+                            if (friend.friends[i] == user._id){
+                                nodups = false;
+                            }
+                        }
+
+                        if (nodups) {
+                            friend.friends.push(user._id);
+                        }
+
+                        let promise = user.save(function(err){
+                            if (err) throw err;
+
+                            let promise = friend.save(function(err){
+                                if (err) throw err;
+
+                                var tosend = [];
+
+                                tosend.push(friend);
+                                tosend.push(user);
+                                res.send(tosend);
+                            });
+                        });
+                    } else {
+                        res.send(user);
+                    }
+                });
+            } else {
+                res.send([]);
+            }
+        });
+    } else {
+        res.send([]);
+    }
+});
+
+/******
+ *   Output: [] or array of Users
+ */
+app.post('/users/remove/friend',function(req,res){
+    let friendId = req.body.friendId;
+    let userId = req.body.userId;
+
+    if (userId && friendId) {
+
+        Users.findOne({_id: userId}, function (err, user) {
+            if (err) throw err;
+            if (user) {
+                Users.findOne({_id: friendId}, function (err, friend) {
+                    if (err) throw err;
+                    if (friend){
+
+                        var oldfriends = [];
+                        var oldfriend;
+
+                        while (user.friends.length > 0){
+                            oldfriend = user.friends.pop();
+                            if (oldfriend != friend._id){
+                                oldfriends.push(oldfriend);
+                            }
+                        }
+
+                        user.friends = oldfriends;
+                        oldfriends = [];
+
+                        while (friend.friends.length > 0){
+                            oldfriend = friend.friends.pop();
+                            if (oldfriend != user._id){
+                                oldfriends.push(oldfriend);
+                            }
+                        }
+
+                        user.friends = oldfriends;
+
+
+                        let promise = user.save(function(err){
+                            if (err) throw err;
+
+                            let promise = friend.save(function(err){
+                                if (err) throw err;
+
+                                var tosend = [];
+
+                                tosend.push(friend);
+                                tosend.push(user);
+                                res.send(tosend);
+                            });
+                        });
+                    } else {
+                        res.send(user);
+                    }
+                });
+            } else {
+                res.send([]);
+            }
+        });
+    } else {
+        res.send([]);
+    }
+});
+
+/******
+ *   Output: [] or array of Users
+ */
+app.post('/users/get/friends', function(req,res){
+    let userId = req.body.userId;
+
+    if (userId) {
+        Users.find({friends: {$elemMatch: {$eq: userId}}}, function(err, friend){
+            if (err) throw err;
+
+            res.send(friend);
+        });
+    } else {
+        res.send([]);
+    }
+});
+
+
+/******
+ *   Output: [] or array of Users
+ */
+app.post('/users/get', function(req, res){
+    let userId = req.body.userId;
+
+    Users.find({_id: userId}, function(err, user){
+        if (err) throw err;
+
+        res.send(user);
+    })
+});
+
+/******
+ *   Output: [] or array of Houses
+ */
+app.post('/users/get/house', function(req,res){
+    let userId = req.body.userId;
+
+    Users.findOne({_id: userId}, function(err, user){
+        if (err) throw err;
+        if (user){
+            if (user.housesDwelled.length > 0){
+                Houses.find({_id: {$in:  user.housesDwelled}},
+                    function(err, houses){
+                        if (err) throw err;
+
+                        res.send(houses);
+                    });
+            } else {
+                res.send([]);
+            }
+        } else {
+            res.send([]);
+        }
+
+    });
+
+});
+/***********************************
+ * Chores Endpoints
+ **********************************/
+
+/******
+ *   Helper function: TODO: implement scheduling
+ */
+var choreSchedule = function(parts, sched){
+    var next = null;
+    if (sched == "random"){
+        next = parts.pop();
+    } else if (sched == "round_robin"){
+        next = parts.pop();
+    } else {
+        next = parts.pop();
+    }
+    parts.push(next);
+    return [next];
+};
+
+/******
+ *   Output: [] or array of Chores
+ *   get all chores for this user
+ */
 app.post("/chores/get",function(req, res){
     let userId = req.body.userId;
-    console.log(req.body);
-    // let chores = parsed.Chores.filter(chore => chore.owner === userId);
-    let chores = parsed.Chores;
-    res.send(chores);
+    Chores.find({participants: {$elemMatch: {$eq: userId } }},
+        function(err,chores){
+            if (err) throw err;
+
+            res.send(chores);
+        });
 });
 
-//add a new chore
-app.post("/chores/add", function(req, res){
-    let chore = req.body.chore;
-    parsed.Chores.push(chore);
-    console.log(parsed.Chores)
-    res.send(parsed.Chores);
+
+/******
+ *   Output: [] or array of Chores
+ *   create a new chore
+ */
+app.post("/chores/create",function(req,res){
+    let choreOwner  = req.body.userId;
+    let choreName   = req.body.name;
+    let choreDesc   = req.body.description;
+    let choreParts  = req.body.participants;
+    let choreFreq   = req.body.frequency;
+    let choreSched  = req.body.scheduling;
+
+    var newChore = Chores({
+        owner: choreOwner,
+        name: choreName,
+        dateCreated: new Date(),
+        dateCompleted: null,
+        datePlanned: Date.now(),
+        negativeFeedbackList: [],
+        description: choreDesc,
+        participants: choreParts,
+        frequency: choreFreq,
+        scheduling: choreSched,
+        current: choreSchedule(choreParts, choreSched)
+    });
+
+    var promise = newChore.save(function(err){
+        if (err) throw err;
+        Chores.find({participants: {$elemMatch: {$eq: choreOwner}}},
+            function(err,chores){
+                if (err) throw err;
+                res.send(chores);
+            });
+
+    });
 });
 
-app.post('/chat/all', function(req, res){
-    var userId = req.body.userId;
-    var threads = {};
-    console.log("working");
-    console.log(typeof(req.body.userId));
-    console.log(req.body.userId);
-    console.log(typeof(userId) + " " + userId);
-    for (let i = 0; i < parsed.Chats.length;i++){
-        if (parsed.Chats[i].to == userId ||
-            parsed.Chats[i].from == userId){
-            var index = parsed.Chats[i].threadId;
-            if (!threads[index]) {
-                threads[index] = [];
-            }
-            threads[index].push(parsed.Chats[i]);
+
+/******
+ *   Output: [] or array of Chores
+ */
+app.post("/chores/complete", function(req,res){
+    let choreId = req.body.choreId;
+    let userId  = req.body.userId;
+
+    Chores.findOne({_id: choreId},function(err,chore){
+        if (err) throw err;
+
+        chore.dateCompleted = new Date();
+        if (chore.frequency != "once") {
+            chore.current = choreSchedule(chore.participants, chore.scheduling);
         }
-    }
-    console.log("about to sort!");
-    for (var thread in threads){
-        console.log("sorting");
-        threads[thread].sort(function(a,b){
-            return Date.parse(a.date) > Date.parse(b.date)} );
-    }
 
-    res.send(threads);
+        var promise = chore.save(function(err){
+            if (err) throw err;
+            Chores.find({participants: {$elemMatch: {$eq: userId}}},
+                function(err,chores){
+                    if (err) throw err;
+                    res.send(chore);
+                });
+        });
+    });
 });
 
-app.post('/users/all', function(req, res){
-    res.send(parsed.Users);
-});
 
-app.post('/houses/all', function(req, res){
+/******
+ *   Output: Notification
+ */
+app.post("/chores/remind",function(req,res){
+    let choreId = req.body.choreId;
     let userId = req.body.userId;
-    let housesArray = [];
-    let i=0;
-    for (i=0; i<parsed.Users.length; i++) {
-        if (parsed.Users[i].id == userId) {
-            let j=0;
-            // console.log("USER LIVES IN: " + parsed.Users[i].housesDwelled);
-            for (j=0; j<parsed.Users[i].housesDwelled.length; j++) {
-                let k=0;
-                for (k=0; k<parsed.Houses.length; k++) {
-                    // console.log("HOUSE ID: " + parsed.Houses[k].id);
-                    // console.log("DWELLED: " + parsed.Users[i].housesDwelled[j]);
-                    if (parsed.Houses[k].id == parsed.Users[i].housesDwelled[j]) {
-                        housesArray.push(parsed.Houses[k]);
+
+    Chores.findOne({_id: choreId}, function(err,chore){
+        if (err) throw err;
+        Users.findOne({_id: userId}, function(err,user){
+            if (err) throw err;
+
+            var newNotify = Notifications({
+                for: user._id,
+                type: "chore",
+                name: "Reminder: " + chore.name,
+                description: "Hey, " + user.firstname + " you have an unfinished chore: " + chore.name,
+                date: (new Date()),
+                status: "unread"
+            });
+
+            newNotify.save(function(err){
+                if (err) throw err;
+
+                res.send(newNotify);
+            });
+        });
+    });
+});
+
+
+/******
+ *   Output: Notification
+ */
+app.post("/chores/callOut",function(req,res){
+    let choreId  = req.body.choreId;
+    let userId   = req.body.userId;
+    let friendId = req.body.friendId;
+
+    Chores.findOne({_id: choreId}, function(err,chore){
+        if (err) throw err;
+        Users.findOne({_id: userId}, function(err,user){
+            if (err) throw err;
+            Users.findOne({_id: friendId}, function(err,friend){
+                if (err) throw err;
+
+                var newNotify = Notifications({
+                    for: friend._id,
+                    type: "callout",
+                    name: "Uh-oh! " + friend.firstname + ", chore not complete!",
+                    description: user.firstname + " thinks you need to complete " + chore.name,
+                    date: new Date(),
+                    status: "unread"
+                });
+
+                var promise = newNotify.save(function(err){
+                    if (err) throw err;
+
+                    res.send(newNotify);
+                });
+            });
+        });
+    });
+});
+
+
+/******
+ *   Output: [] or array of Chores
+ */
+app.post("/chores/delete",function(req,res){
+    let choreId = req.body.choreId;
+    let userId  = req.body.userId;
+
+    Chores.findOneAndRemove({_id: choreId}, function(err,chore){
+        if (err) throw err;
+        Chores.find({participants: {$elemMatch: {$eq: userId}}},
+            function(err, chores){
+                if (err) throw err;
+                res.send(chores);
+            });
+    });
+});
+
+/***********************************
+ * Chats Endpoints
+ **********************************/
+
+
+/******
+ *   Output: Object
+ *   {
+ *      thread: Threads,
+ *      chats: Chats
+ *   }
+ */
+app.post("/threads/send/message",function(req,res){
+    let threadId = req.body.threadId;
+    let userParts = req.body.participants;
+    let fromUser = req.body.from;
+    let message = req.body.message;
+
+    var newChat = Chats({
+        date: new Date(),
+        from: fromUser,
+        message: message
+    });
+
+    if (threadId) {
+        Threads.findOne({_id: threadId}, function (err, thread) {
+            if (err) throw err;
+            if (thread) {
+                thread.chats.push(newChat._id);
+                let promise = newChat.save(function (err) {
+                    if (err) throw err;
+                    let promise = thread.save(function (err) {
+                        if (err) throw err;
+                        Chats.find({_id: {$in: thread.chats}}, function (err, chats) {
+                            if (err) throw err;
+
+                            var tosend = {
+                                thread: thread,
+                                chats: chats
+                            }
+
+                            res.send(tosend);
+                        });
+
+                    });
+                });
+            } else {
+                createNewThread(userParts, newChat,res);
+            }
+        });
+    } else {
+        createNewThread(userParts,newChat,res);
+    }
+});
+
+
+/******
+ * Helper function
+ */
+var createNewThread = function(userParts,newChat,res){
+    var newThread = Threads({
+        participants: userParts,
+        chats: []
+    });
+    console.log("Creating new thread: " + userParts);
+    newThread.chats.push(newChat._id);
+
+    let promise = newChat.save(function (err) {
+        if (err) throw err;
+        let promise = newThread.save(function (err) {
+            if (err) throw err;
+
+            var tosend = {
+                thread: newThread,
+                chats: newChat
+            }
+
+            res.send(tosend);
+        });
+    });
+}
+
+
+/******
+ *   Output: [] or array of Threads
+ */
+app.post("/threads/get",function(req,res){
+    let userId     = req.body.userId;
+
+    Threads.find({participants: {$elemMatch: {$eq: userId}}},
+        function(err, threads){
+            if (err) throw err;
+
+            res.send(threads);
+        });
+
+});
+
+/******
+ *   Output: [] or Object
+ *   {
+ *      thread: Threads,
+ *      chats: Chats
+ *   }
+ */
+app.post("/threads/get/chat",function(req,res){
+    let threadId = req.body.threadId;
+
+    Threads.findOne({_id: threadId}, function(err,thread){
+        if (err) throw err;
+        if (thread){
+            Chats.find({_id: {$in: thread.chats}}, function(err, chats){
+                if (err) throw err;
+
+                var tosend = {
+                    thread: thread,
+                    chats: chats
+                }
+
+                res.send(tosend);
+            });
+        } else {
+            res.send([]);
+        }
+    });
+});
+
+/***********************************
+ * Notifications Endpoints
+ **********************************/
+/******
+ *   Output: [] or array of Notifications
+ */
+app.post("/notifications/get",function(req,res){
+    let userId = req.body.userId;
+
+    Notifications.find({for: userId}, function(err, notifc){
+        if (err) throw err;
+
+        res.send(notifc);
+    });
+
+});
+
+/******
+ *   Output: Notifications
+ */
+app.post("/notifications/read",function(req,res){
+    let notificationId = req.body.notificationId;
+    let userId = req.body.userId;
+
+    Notifications.findOne({_id: notificationId, for: userId},
+        function(err,notification){
+            if (err) throw err;
+            notification.status = "read";
+            notification.save(function(err){
+                if (err) throw err;
+                res.send(notification);
+            });
+        });
+});
+
+/******
+ *   Output: Notifications
+ */
+app.post("/notifications/create", function(req,res){
+    let notiFor = req.body.for;
+    let notiName  = req.body.name;
+    let notiDesc  = req.body.description;
+    let notiType = req.body.type;
+
+    var newNotific = Notifications({
+        for: notiFor,
+        type: notiType,
+        name: notiName,
+        description: notiDesc,
+        date: new Date(),
+        status: "unread"
+    });
+
+    var promise = newNotific.save(function(err){
+        if (err) throw err;
+
+        res.send(newNotific);
+    });
+
+});
+
+/******
+ *   Output: [] or array of Notifications
+ */
+app.post("/notification/delete", function(req,res){
+    let notiId = req.body.notificationId;
+    let userId = req.body.userId;
+
+    Notifications.findOneAndRemove({_id: notiId}, function(err,notification){
+        if (err) throw err;
+        Notifications.find({for: userId}, function(err,notifs){
+            if (err) throw err;
+
+            res.send(notifs);
+        });
+    });
+});
+
+/***********************************
+ * Houses Endpoints
+ **********************************/
+/******
+ *   Output: [] or Object
+ *   {
+ *      houses: Houses,
+ *      users: Users
+ *   }
+ */
+app.post("/houses/create",function(req,res){
+    let houseNickname = req.body.nickname;
+    let houseAddress  = req.body.address;
+    let housePhoto    = req.body.photo;
+    let userId        = req.body.userId;
+
+    Users.findOne({_id: userId}, function(err,user){
+        if (err) throw err;
+        if (user){
+            var newHouse = Houses({
+                nickname: houseNickname,
+                address: houseAddress,
+                photo: housePhoto,
+                dwellers: [user._id],
+                owner: [user._id]
+            });
+
+            user.housesDwelled.push(newHouse._id);
+
+            user.save(function(err){
+                if (err) throw err;
+
+                newHouse.save(function(err){
+                    if (err) throw err;
+
+                    var tosend = {
+                        houses: newHouse,
+                        users: user
+                    };
+
+                    res.send(tosend);
+                });
+            });
+
+        } else {
+            res.send([]);
+        }
+    });
+});
+
+/******
+ *   Output: [] or array of Houses
+ *   gets houses for a given user
+ */
+app.post("/houses/get",function(req,res){
+    let userId = req.body.userId;
+
+    Houses.find({dwellers: {$elemMatch: {$eq: userId}}}, function (err, houses) {
+        if (err) throw err;
+
+        res.send(houses);
+    });
+
+});
+
+/******
+ *   Output: [] or array of Houses
+ *   gets all houses
+ */
+app.post("/houses/all",function(req,res){
+
+    Houses.find({}, function (err, houses) {
+        if (err) throw err;
+
+        res.send(houses);
+    });
+
+});
+/******
+ *   Output: [] or array of Users
+ *   gets all users for a given house
+ */
+app.post("/houses/get/user",function(req,res){
+    let houseId = req.body.houseId;
+
+    Users.find({housesDwelled: {$elemMatch: {$eq: houseId}}}, function (err, users) {
+        if (err) throw err;
+
+        res.send(users);
+    });
+
+});
+
+/******
+ *   Output: [] or Object
+ *   {
+ *      houses: Houses,
+ *      users: Users
+ *   }
+ *
+ *   adds friend to house, returns friend and house
+ */
+app.post("/houses/add/friend",function(req,res){
+    let friendId = req.body.friendId;
+    let houseId = req.body.houseId;
+    let userId = req.body.userId;
+
+    if (friendId && houseId && userId) {
+        Houses.findOne({_id: houseId, owner: {$elemMatch: {$eq: userId}}}, function (err, house) {
+            if (err) throw err;
+
+            if (house) {
+
+                var nodups = true;
+
+                for (var i = 0; i < house.dwellers.length; i++){
+                    if (house.dwellers[i] == friendId){
+                        nodups = false;
                     }
                 }
+                if (nodups) {
+                    house.dwellers.push(friendId);
+                }
+
+                let promise = house.save(function (err) {
+                    if (err) throw err;
+                    Users.findOne({_id: friendId}, function (err, friend) {
+                        if (err) throw err;
+
+                        if (friend) {
+
+                            var nodups = true;
+                            for (var i = 0; i < friend.housesDwelled.length; i++){
+                                if (friend.housesDwelled[i] == house._id){
+                                    nodups = false;
+                                }
+                            }
+                            if (nodups) {
+                                friend.housesDwelled.push(house._id);
+                            }
+
+                            let promise = friend.save(function(err){
+                                if (err) throw err;
+
+                                var tosend = {
+                                    houses: [],
+                                    users: []
+                                };
+
+                                tosend.users.push(friend);
+                                tosend.houses.push(house);
+                                res.send(tosend);
+                            });
+                        } else {
+                            res.send(house);
+                        }
+                    });
+                });
+            } else {
+                res.send([]);
             }
-            break;
-        }
+        });
+    } else {
+        res.send([]);
     }
-    res.send(housesArray);
 });
 
-app.post("/chores/mine",function (req,res){
-    let userId = req.body.userId;
-    var chores = [];
-    for (var i = 0; i < parsed.Chores.length;i++){
-        for (var j = 0; j < parsed.Chores[i].participants.length;j++){
-            if (userId == parsed.Chores[i].participants[j]){
-                chores.push(parsed.Chores[i]);
+/******
+ *   Output: [] or Object
+ *   {
+ *      houses: Houses,
+ *      users: Users
+ *   }
+ *
+ *   removes friend from house returns friend and house
+ */
+app.post("/houses/remove/friend",function(req,res){
+    let friendId = req.body.friendId;
+    let houseId  = req.body.houseId;
+    let userId   = req.body.userId;
+
+    if (friendId && houseId && userId) {
+        Users.findOne({_id: friendId}, function (err, friend) {
+            if (err) throw err;
+
+            var houses = [];
+            var curhouse;
+
+            while (friend.housesDwelled.length > 0) {
+                curhouse = friend.housesDwelled.pop();
+                if (curhouse != houseId) {
+                    houses.push(house);
+                }
             }
-        }
+
+            friend.housesDwelled = houses;
+
+            var promise = friend.save(function (err) {
+                if (err) throw err;
+
+                Houses.findOne({_id: houseId, owner: {$elemMatch: {$eq: userId}}}, function (err, house) {
+                    if (err) throw err;
+                    if (house) {
+                        var dwellers = [];
+                        var dweller;
+
+                        while (house.dwellers.length > 0) {
+                            dweller = house.dwellers.pop();
+                            if (dweller != friend._id) {
+                                dwellers.push(dweller);
+                            }
+                        }
+
+                        house.dwellers = dwellers;
+
+                        var promise = house.save(function (err) {
+                            if (err) throw err;
+
+                            var tosend = {
+                                houses: [],
+                                users: []
+                            };
+
+                            tosend.users.push(friend);
+                            tosend.houses.push(house);
+                            res.send(tosend);
+                        });
+                    } else {
+                        res.send(friend);
+                    }
+                });
+            });
+        });
+    } else {
+        res.send([]);
     }
-    res.send(chores);
 });
 
+
+
+
+/*
+ Retrieve the user's chore list
+ */
+
+//
+// app.post("/chats/get",function(req,res){
+//     let userId = req.body.userId;
+//     var chores = [];
+//     for (var i = 0; i < parsed.Chores.length;i++){
+//         for (var j = 0; j < parsed.Chores[i].participants.length;j++){
+//             if (userId == parsed.Chores[i].participants[j]){
+//                 chores.push(parsed.Chores[i]);
+//             }
+//         }
+//     }
+//     res.send(chores);
+// });
+//
+// app.post("/houses/get",function(req,res){
+//     let userId = req.body.userId;
+//     let housesArray = [];
+//     let i=0;
+//     for (i=0; i<parsed.Users.length; i++) {
+//         if (parsed.Users[i].id == userId) {
+//             let j=0;
+//             // console.log("USER LIVES IN: " + parsed.Users[i].housesDwelled);
+//             for (j=0; j<parsed.Users[i].housesDwelled.length; j++) {
+//                 let k=0;
+//                 for (k=0; k<parsed.Houses.length; k++) {
+//                     // console.log("HOUSE ID: " + parsed.Houses[k].id);
+//                     // console.log("DWELLED: " + parsed.Users[i].housesDwelled[j]);
+//                     if (parsed.Houses[k].id == parsed.Users[i].housesDwelled[j]) {
+//                         housesArray.push(parsed.Houses[k]);
+//                     }
+//                 }
+//             }
+//             break;
+//         }
+//     }
+//     res.send(housesArray);
+//
+// });
+//
+// app.post('/chat/all', function(req, res){
+//     var userId = req.body.userId;
+//     var threads = {};
+//     for (let i = 0; i < parsed.Chats.length;i++){
+//         if (parsed.Chats[i].to == userId ||
+//             parsed.Chats[i].from == userId){
+//             var index = parsed.Chats[i].threadId;
+//             if (!threads[index]) {
+//                 threads[index] = [];
+//             }
+//             threads[index].push(parsed.Chats[i]);
+//         }
+//     }
+//     for (var thread in threads){
+//         threads[thread].sort(function(a,b){
+//         return Date.parse(a.date) > Date.parse(b.date)} );
+//     }
+//
+//     res.send(threads);
+// });
+//
+// app.post('/users/all', function(req, res){
+//     res.send(parsed.Users);
+// });
+//
+//
+//
+//
 //
 // app.post("/houses",function(req, res){
 //     // return the collection of houses from the db
