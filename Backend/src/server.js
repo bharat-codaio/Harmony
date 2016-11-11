@@ -490,13 +490,13 @@ app.post("/chores/create",function(req,res){
     let choreParts  = req.body.participants;
     let choreFreq   = req.body.frequency;
     let choreSched  = req.body.scheduling;
-
+    let datePlanned = req.body.datePlanned;
     var newChore = Chores({
         owner: choreOwner,
         name: choreName,
         dateCreated: new Date(),
         dateCompleted: null,
-        datePlanned: Date.now(),
+        datePlanned: datePlanned,
         negativeFeedbackList: [],
         description: choreDesc,
         participants: choreParts,

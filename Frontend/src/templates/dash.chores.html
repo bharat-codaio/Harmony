@@ -13,7 +13,7 @@
                 <P>Today</P>
                 </div>
                 <div class="chores-item" ng-repeat="chore in chores.myChoresToday">
-                    <input type="checkbox" />
+                    <input type="checkbox" ng-click="chores.markComplete(chore)" />
                     <P class="item-description">{{chore.name}}</P>
                     <P class="item-time">{{chore.time}}</P>
                 </div>
@@ -27,7 +27,7 @@
                     <P>Tomorrow</P>
                 </div>
                 <div class="chores-item" ng-repeat="chore in chores.myChoresTomorrow">
-                    <input type="checkbox" ng-checked="chore.checked" />
+                    <input type="checkbox"  ng-checked="chore.checked" ng-click="chores.markComplete(chore)" />
                     <P class="item-description">{{chore.name}}</P>
                     <P class="item-time">{{chore.time}}</P>
                 </div>
@@ -118,20 +118,14 @@
                 <input type="checkbox" class="post-checkbox" ng-click="chores.assignMe()">
             </div>
         </div>
-        <div class="box-post">
+        <div class="box-post" ng-repeat="friend in chores.friends">
             <div class="post-content">
                 <img class="post-icon" src="/static/img/profile.svg" />
-                <P class="post-assignee">Jimmy</P>
-                <input type="checkbox" class="post-checkbox">
+                <P class="post-assignee">{{friend.firstname}} {{friend.lastname}}</P>
+                <input type="checkbox" class="post-checkbox" ng-click="chores.assign(friend)">
             </div>
         </div>
-        <div class="box-post">
-            <div class="post-content">
-                <img class="post-icon" src="/static/img/profile.svg" />
-                <P class="post-assignee">Sam</P>
-                <input type="checkbox" class="post-checkbox">
-            </div>
-        </div>
+
 
         <P> <a class="button-overlay" ng-click="chores.submitChore()">Submit</a>
         </P>

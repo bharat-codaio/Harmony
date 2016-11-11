@@ -51,10 +51,8 @@
                 .post('/users/get/friends',
                 {userId : $rootScope.userId},
                     (friends) => {
-                        console.log("friends");
                         $rootScope.friends = friends;
                         vm.friends = $rootScope.friends;
-                        console.log(JSON.stringify(friends, null, 2));
                     },
                     (payload) =>{
                         console.log("ERROR ACQUIRING FRIENDS");

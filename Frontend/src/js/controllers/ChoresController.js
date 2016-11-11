@@ -30,6 +30,49 @@
         vm.othersChoresPastDue = {};
         vm.newChore = {};
         vm.assignToMe = false;
+        vm.assigneeList = [];
+
+        vm.friends = $rootScope.friends;
+        vm.populateFriends = function(){
+            ServerService
+                .post('/users/get/friends',
+                    {userId : $rootScope.userId},
+                    (friends) => {
+                        $rootScope.friends = friends;
+                        vm.friends = $rootScope.friends;
+                    },
+                    (payload) =>{
+                        console.log("ERROR ACQUIRING FRIENDS");
+                        console.log(JSON.stringify(payload, null, 2));
+                    }
+
+                );
+        };
+
+        vm.markComplete = function(chore){
+            ServerService.post(
+                "/chores/complete",
+                {
+                    choreId: chore._id,
+                    userId: $rootScope.userId
+                },
+                (payload) => {
+                    //success
+                    if(!! payload.dateCompleted){
+                        chore.checked = true;
+                    }
+                    toastr.success("Success! Completion toggled for chore : " + chore.name)
+
+                },
+                (payload) => {
+                    //fail
+                }
+
+
+            )
+        };
+
+        vm.populateFriends();
 
         vm.callOut = function(chore){
           toastr.warning("Calling out " + chore.assigneeName);
@@ -63,9 +106,8 @@
 
         function submitChore(){
             //TODO: Send chore to server
-            vm.newChore.owner = $rootScope.userId;
-            vm.newChore.participants = [$rootScope.userId];
-            vm.newChore.dateCreated = Date.parse(new Date());
+            vm.newChore.userId = $rootScope.userId;
+            vm.newChore.participants = vm.assigneeList;
             vm.newChore.datePlanned = new Date(vm.newChore.choreDate).getTime();
 
             let time24 = vm.newChore.choreTime.split(":");
@@ -75,8 +117,8 @@
             console.log(vm.newChore.choreDate);
             console.log(new Date(vm.newChore.choreDate).getTime());
 
-            ServerService.post('/chores/add',
-                {chore: vm.newChore},
+            ServerService.post('/chores/create',
+                vm.newChore,
                 chores => {formatChores(chores)},
                 (err => {console.log(err)}));
 
@@ -85,11 +127,27 @@
         }
 
         vm.assignMe = function(){
-            console.log("Toggle Assign me");
-            vm.assignToMe = !vm.assignToMe;
+            if(vm.assigneeList.includes($rootScope.userId)){
+                vm.assigneeList.filter( id => id !== $rootScope.userId)
+            }else {
+                vm.assigneeList.push($rootScope.userId);
+            }
+        };
+
+
+        vm.assign = function(friend){
+            if(vm.assigneeList.includes(friend._id)){
+                vm.assigneeList.filter( id => id !== friend._id)
+            }else {
+                vm.assigneeList.push(friend._id);
+            }
         };
 
         function formatChores(chores){
+
+            chores.filter(c => c.participants.includes($rootScope.userId));
+            console.log("chores to format");
+            console.log(JSON.stringify(chores));
             let eod = new Date();
             console.log(Date.parse(eod));
             eod.setHours(0,0,0,0);
