@@ -38,10 +38,15 @@
                     },
                     (payload) => {
                         //success
+                        console.log("PAYLOAD");
+                        console.log(JSON.stringify(payload));
+
+                        console.log("VM CHATS");
                         vm.messageToSend="";
                         vm.chats=payload.chats;
                         formatChats();
-                        console.log(JSON.stringify(payload));
+                        console.log(JSON.stringify(vm.chats, null, 2));
+
                     },
                     (payload) => {
                         //fail
@@ -54,6 +59,10 @@
             console.log("Chats to format");
             console.log(JSON.stringify(vm.chats, null, 2));
             if(!!vm.chats){
+                if (!vm.chats.length){
+                   vm.chats = [vm.chats];
+                }
+
                 vm.chats.forEach( c => {
                     if(c.from===$rootScope.userId){
                         c.senderName = "Me";
