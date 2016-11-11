@@ -172,14 +172,18 @@ app.post('/users/all', function(req, res){
  */
 app.post('/users/login', function(req, res){
 
+    console.log("Attempt login");
+    console.log(JSON.stringify(req.body));
     let userEmail = req.body.email;
     let userPassword = req.body.password;
     Users.find({email: userEmail, password: userPassword}, function(err,users){
         if (err) throw err;
         if(!!users[0]){
-            res.send(users);
+            console.log(JSON.stringify(users[0]));
+            res.send(users[0]);
         }
         else{
+            console.log("no user found");
             res.send(null);
         }
 
