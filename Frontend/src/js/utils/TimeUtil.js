@@ -12,4 +12,7 @@ var formatAMPM = function(date) {
     return  hours + ':' + minutes + ' ' + ampm;
 };
 
+var getDate = function(date){
+    return ((date.getMonth()+1) + "/" + date.getDate());
+};
 var ONE_DAY_MILLIS = 24*60*60*1000;

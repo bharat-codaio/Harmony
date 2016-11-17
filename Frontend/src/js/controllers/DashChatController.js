@@ -138,6 +138,7 @@
                             toastr.error("Error : " + payload.error);
                         }
                         else if(!! payload.friend){
+                          toastr.success("Your Friend accepted your invite! Scroll through the list to chat with them!");
                             $rootScope.friends.push(payload.friend);
                             vm.friends = $rootScope.friends;
                             console.log($rootScope.friends);

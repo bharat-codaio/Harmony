@@ -34,6 +34,19 @@
             </div>
         </div>
 
+        <div class="card">
+            <div class="chores-section">
+                <div class="chores-heading">
+                    <P>Others</P>
+                </div>
+                <div class="chores-item" ng-repeat="chore in chores.myChoresRemaining">
+                    <input type="checkbox"  ng-checked="chore.checked" ng-click="chores.markComplete(chore)" />
+                    <P class="item-description">{{chore.name}}</P>
+                    <P class="item-time">{{chore.time}} {{chore.date}}</P>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div ng-show="!chores.showMyChores">

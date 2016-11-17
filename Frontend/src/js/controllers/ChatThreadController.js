@@ -77,7 +77,6 @@
                     c.time = formatAMPM(new Date(Date.parse(c.date)));
                 });
 
-                vm.chats = vm.chats.reverse();
 
             }
 

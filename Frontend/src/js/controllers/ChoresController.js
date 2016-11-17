@@ -157,6 +157,7 @@
 
             vm.myChoresToday = [];
             vm.myChoresTomorrow = [];
+            vm.myChoresRemaining = [];
             vm.othersChoresCompleted = [];
             vm.othersChoresPastDue = [];
 
@@ -174,6 +175,7 @@
                 let date = new Date(chore.datePlanned);
                 //console.log(date);
                 chore.time = formatAMPM(date);
+                chore.date = getDate(date);
                 if(chore.owner===$rootScope.userId){
                     if(eod_next - date >= 0 && eod_next - date <= ONE_DAY_MILLIS){
                         vm.myChoresToday.push(chore);
@@ -181,8 +183,11 @@
                     else if( eod_next - date < 0 && date - eod_next <= ONE_DAY_MILLIS ) {
                         vm.myChoresTomorrow.push(chore);
                     }
+                    else{
+                        vm.myChoresRemaining.push(chore);
+                    }
                 }else{
-                    chore.assigneeName = "Jimmy";
+                    chore.assigneeName = chore.userId;//TODO: match this to correct name
                     if(Date.parse(new Date())-chore.datePlanned>=0 && !chore.dateCompleted){
                         vm.othersChoresPastDue.push(chore);
                     }else{
