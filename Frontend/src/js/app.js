@@ -22,7 +22,7 @@
 
         })
         .config(($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider)=>{
-            $httpProvider.defaults.withCredentials = true;
+            $httpProvider.defaults.withCredentials = false;
 
             console.log("This is app config");
 

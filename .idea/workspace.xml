@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45bb9773-5da3-415f-8ed3-fe7a1c785c0f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Backend/src/ServerEnv.js" afterPath="$PROJECT_DIR$/Backend/src/ServerEnv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/js/controllers/ChoresController.js" afterPath="$PROJECT_DIR$/Frontend/src/js/controllers/ChoresController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/js/services/ServerService.js" afterPath="$PROJECT_DIR$/Frontend/src/js/services/ServerService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/js/utils/TimeUtil.js" afterPath="$PROJECT_DIR$/Frontend/src/js/utils/TimeUtil.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/templates/dash.chores.html" afterPath="$PROJECT_DIR$/Frontend/src/templates/dash.chores.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/templates/launch.html" afterPath="$PROJECT_DIR$/Frontend/src/templates/launch.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Frontend/src/js/app.js" afterPath="$PROJECT_DIR$/Frontend/src/js/app.js" />
     </list>
     <ignored path="Harmony.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,11 +47,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Frontend/src/js/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="26" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="86" selection-end-column="5" />
+                <state relative-caret-position="495">
+                  <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
                   <folding />
                 </state>
               </provider>
@@ -72,7 +67,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ChoresController.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="ChoresController.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Frontend/src/js/controllers/ChoresController.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="477">
@@ -253,7 +248,6 @@
         <option value="$PROJECT_DIR$/Frontend/src/lib/jquery.datetimepicker.min.js" />
         <option value="$PROJECT_DIR$/Frontend/src/css/index.scss" />
         <option value="$PROJECT_DIR$/Frontend/src/js/services/UserIdService.js" />
-        <option value="$PROJECT_DIR$/Frontend/src/js/app.js" />
         <option value="$PROJECT_DIR$/Frontend/src/js/controllers/ChatListController.js" />
         <option value="$PROJECT_DIR$/Frontend/src/templates/chat.list.html" />
         <option value="$PROJECT_DIR$/Frontend/src/templates/chat.thread.html" />
@@ -271,6 +265,7 @@
         <option value="$PROJECT_DIR$/Frontend/src/templates/dash.chores.html" />
         <option value="$PROJECT_DIR$/Frontend/src/js/utils/TimeUtil.js" />
         <option value="$PROJECT_DIR$/Frontend/src/js/controllers/ChoresController.js" />
+        <option value="$PROJECT_DIR$/Frontend/src/js/app.js" />
       </list>
     </option>
   </component>
@@ -687,18 +682,18 @@
       <workItem from="1478825443260" duration="26115000" />
       <workItem from="1479059142319" duration="74000" />
       <workItem from="1479059267718" duration="827000" />
-      <workItem from="1479269814955" duration="8973000" />
+      <workItem from="1479269814955" duration="9603000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109236000" />
+    <option name="totallyTimeSpent" value="109866000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.253125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.253125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -930,14 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/src/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="86" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/src/alternate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="535">
@@ -1034,6 +1021,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="477">
           <caret line="133" column="17" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/src/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
           <folding />
         </state>
       </provider>
