@@ -78,7 +78,8 @@
                     <img class="post-icon" src="/static/img/profile.svg" />
                     <P class="post-username">{{chore.assigneeName}}</P>
                     <P class="post-last-message">{{chore.name}}</P>
-                    <P class="post-time">{{chore.time}}</P>
+                    <P class="post-time">{{chore.time}}<B>{{chore.date}}</B></P>
+
                     <P class="post-action" ng-click="chores.remind(chore)">Remind?</P>
                 </div>
             </div>

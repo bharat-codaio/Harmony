@@ -12,7 +12,31 @@ var formatAMPM = function(date) {
     return  hours + ':' + minutes + ' ' + ampm;
 };
 
+ var validateHours = function(hrs){
+     if(hrs<24 && hrs>=0){
+         return true;
+     }
+     else{
+         return false;
+     }
+
+};
+
+var validateMins = function(mins){
+    if(mins<60 && mins>=0){
+        return true;
+    }
+    else{
+        return false;
+    }
+
+};
+
 var getDate = function(date){
-    return ((date.getMonth()+1) + "/" + date.getDate());
+    var month = date.getMonth()+1;
+    if(month<10){
+        month = "0" + month;
+    }
+    return (month + "/" + date.getDate());
 };
 var ONE_DAY_MILLIS = 24*60*60*1000;

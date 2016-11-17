@@ -112,17 +112,33 @@
 
             let time24 = vm.newChore.choreTime.split(":");
 
-            vm.newChore.datePlanned += time24[0]*60*60*1000 + time24[1]*60*60;
+            if(validateHours(time24[0])&& validateMins(time24[1])){
+                vm.newChore.datePlanned += time24[0]*60*60*1000 + time24[1]*60*60;
 
-            console.log(vm.newChore.choreDate);
-            console.log(new Date(vm.newChore.choreDate).getTime());
+                console.log(vm.newChore.choreDate);
+                console.log("BEFORE SUBMIT CHORE TIME");
+                console.log(new Date(vm.newChore.choreDate).getTime());
 
-            ServerService.post('/chores/create',
-                vm.newChore,
-                chores => {formatChores(chores)},
-                (err => {console.log(err)}));
+                ServerService.post('/chores/create',
+                  vm.newChore,
+                  chores => {
+                      formatChores(chores);
+                      toastr.success("Created a new chore!");
+                  },
 
-            toastr.success("Created a new chore!");
+                  err => {
+                      toastr.error("Error creating Chore: " + err);
+                      console.log(err)
+                  });
+            }
+            else{
+                toastr.error("Error creating Chore: Time Formatted incorrectly");
+            }
+
+
+
+
+
             vm.hideOverlay();
         }
 
