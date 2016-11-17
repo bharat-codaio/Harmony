@@ -11,9 +11,9 @@
         .module('app')
         .controller('ChoresController', ChoresController);
 
-    ChoresController.$inject = ['ServerService', '$rootScope', '$scope'];
+    ChoresController.$inject = ['$state','ServerService', '$rootScope', '$scope'];
 
-    function ChoresController(ServerService, $rootScope, $scope){
+    function ChoresController($state, ServerService, $rootScope, $scope){
         const vm = this;
 
         vm.showMyChores = true;//shows mine if true or others if false
@@ -124,15 +124,18 @@
                   chores => {
                       formatChores(chores);
                       toastr.success("Created a new chore!");
+                      $state.go('success');
                   },
 
                   err => {
                       toastr.error("Error creating Chore: " + err);
-                      console.log(err)
+                      console.log(err);
+                      $state.go('failure');
                   });
             }
             else{
                 toastr.error("Error creating Chore: Time Formatted incorrectly");
+                $state.go('failure');
             }
 
 

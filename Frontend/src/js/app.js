@@ -36,6 +36,22 @@
                 controllerAs: 'launch'
             };
 
+            const success = {
+                name: 'success',
+                url: '/success',
+                templateUrl: '/static/templates/success.html',
+                controller: 'SuccessController',
+                controllerAs: 'success'
+            };
+
+            const failure = {
+                name: 'failure',
+                url: '/failure',
+                templateUrl: '/static/templates/failure.html',
+                controller: 'FailureController',
+                controllerAs: 'failure'
+            };
+
             const dash = {
                 name: 'dash',
                 url: '/dash',
@@ -79,7 +95,9 @@
             $stateProvider
                 .state(dash)
                 .state(launch)
-                .state(dashChat);
+                .state(dashChat)
+                .state(success)
+              .state(failure);
 
             $urlRouterProvider.otherwise('/launch');
             $locationProvider.html5Mode(true);
