@@ -15,15 +15,6 @@
         console.log("dash chat controller active");
         const vm = this;
         vm.mode = "LIST";
-
-        if(!!$rootScope.selectedTab)
-        {
-          vm.selectedTab=$rootScope.selectedTab;
-        }
-        else{
-          vm.selectedTab="CHAT";
-        }
-
         vm.showDrawer = false;
         vm.showKabobDrop = false;
         vm.showNotifications = false;
@@ -70,6 +61,15 @@
                 );
         };
         vm.populateFriends();
+
+
+      if(!!$rootScope.selectedTab)
+      {
+        vm.selectedTab=$rootScope.selectedTab;
+      }
+      else{
+        vm.selectedTab="CHAT";
+      }
 
 
         $rootScope.$on('ToggleChatMode', (msg, data) => {
